@@ -9,7 +9,7 @@ import Point
 data Tunel = Tun [Link] deriving (Eq, Show)
 
 newT :: [Link]-> Tunel
-newT = Tun
+newT = Tun -- Verificar si los links se la bancan
 
 connectsT :: City -> City -> Tunel -> Bool -- indica si este tunel conceta estas dos ciudades distintas
 connectsT c1 c2 (Tun links) = (enPuntas c1 c2 links) && not ((inMiddle c1 links) || (inMiddle c2 links)) -- Esto es horrible corregir

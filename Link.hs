@@ -1,4 +1,4 @@
-module Link ( Link, newL, linksL, connectsL, capacityL, delayL )
+module Link (Link, newL, linksL, connectsL, capacityL, delayL )
    where
 
 import City
@@ -22,11 +22,8 @@ capacityL (Lin _ _ qua) = capacityQ qua
 delayL :: Link -> Float     -- la demora que sufre una conexion en este canal
 delayL (Lin _ _ qua) = delayQ qua
 
-connectsCity :: Link -> Link -> Bool
-connectsCity (Lin city1 city2 _) link2 = connectsL city1 link2 || connectsL city2 link2
-
 t = [newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5) == Lin (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5),
-     connectsL (newC "la matanza" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == True,
-     linksL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == True,
+     connectsL (newC "la matanza" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)),
+     linksL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)),
      capacityL (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == 2,
      delayL (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == 0.5]
