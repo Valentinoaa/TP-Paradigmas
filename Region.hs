@@ -11,7 +11,7 @@ import Tunel
 
 data Region = Reg [City] [Link] [Tunel]
 newR :: Region
-newR = Region 
+newR = Region -- espera los parametros o se inicializa vacio??? no se deberia inicializar con Reg [] [] []??
 
 foundR :: Region -> City -> Region -- agrega una nueva ciudad a la región
 foundR (Reg cities _ _) city = newR (city : cities) _ _ -- Hay que checkear si la ciudad ya está en la region (ez)
@@ -38,8 +38,6 @@ validT (Reg _ links _) (x:y:xs) = linkedR links x y && linkedR (y:xs)
 
 -- Mergear la validación de validar el tunel con el getLinks??
 getLinks :: [City] -> [Link]
-
-
 
 
 -- Uffff hay que checkear capacidad -> Es un problema pq los links en si no tienen contadores (Idea: usar usesT en cada link o algo parecido)

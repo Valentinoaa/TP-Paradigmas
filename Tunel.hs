@@ -8,7 +8,7 @@ import Point
 
 data Tunel = Tun [Link] deriving (Eq, Show)
 
-newT :: [Link]-> Tunel
+newT :: [Link] -> Tunel
 newT = Tun -- Verificar si los links se la bancan
 
 connectsT :: City -> City -> Tunel -> Bool -- indica si este tunel conceta estas dos ciudades distintas
@@ -28,4 +28,5 @@ inMiddle c1 links = foldr (\x acc -> acc || connectsL c1 x) False ls  -- Me decl
 enPuntas :: City -> City -> [Link] -> Bool
 enPuntas c1 c2 links = connectsL c1 (head links) && connectsL c2 (last links) || connectsL c1 (last links) && connectsL c2 (head links)
 
-
+availableCapacity :: [Link] -> Bool
+availableCapacity links = foldr (\x acc -> acc && capacityL x > 0) False links
