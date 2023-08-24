@@ -31,25 +31,25 @@ linkedR :: Region -> City -> City -> Bool -- indica si estas dos ciudades estan 
 linkedR (Reg _ links _) c1 c2 = foldr (\x acc -> acc || linksL c1 c2 x) False links
 
 delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
-delayR x y z = 0.1
+delayR (Reg _ _ tunels) c1 c2 = delayT tunel
+      where tunel = head [x | x <- tunels, connectsT c1 c2 x] 
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
-availableCapacityForR x y z = 1
+availableCapacityForR (Reg _ links tunels) c1 c2 = (capacityL link) - tunnelsOccuping tunels link
+         where link = findLink links c1 c2 
 
-{-
--- Esta funcion no es necesaria. (Quizas) Depende de como manejemos construir el tunel
-validT :: [Link] -> [City] -> Bool
-validT links [c1, c2] = linkedR links c1 c2 -- Ver como optimizar, atajar casos de listas con <1 ciudad
-validT links (x:y:xs) = linkedR links x y && validT links (y:xs) -- Esto está mal
--}
 
+-- Tener 2 funciones para lo mismo es engorroso, ver como fixear
 getLinks :: [Link] -> [City] -> [Link]
 getLinks links [x, y] = [findLink links x y] -- Ver como optimizar, atajar casos de listas con <1 ciudad
 getLinks links (x:y:xs) = findLink links x y : getLinks links (y:xs)
 
--- Tener 2 funciones para lo mismo es engorroso, ver como fixear
 
 findLink :: [Link] -> City -> City -> Link
 findLink [] c1 c2 = error "No existe el link"
 findLink [x] c1 c2 = if linksL c1 c2 x then x else error "No existe el link"
 findLink (x:y:xs) c1 c2 = if linksL c1 c2 x then x else findLink (y:xs) c1 c2
+
+tunnelsOccuping :: [Tunel] -> Link -> Int
+tunnelsOccuping [] link = 0
+tunnelsOccuping tunels link = length [x | x <- tunels, usesT link x]
