@@ -38,18 +38,18 @@ connectedR region@(Reg _ _ tunels) c1 c2 | cityInR region c1 && cityInR region c
                                          | otherwise = error "alguna de las ciudades no existe en la region"
 
 delayR :: Region -> City -> City -> Float -- dadas dos ciudades conectadas, indica la demora
-delayR region@(Reg _ links _) c1 c2 | cityInR region c1 && cityInR region c2 && linkedR region c1 c2 = delayT (findTunel links c1 c2)
-                                    | otherwise = error "Las ciudades no existen o no estan conectadas"
+delayR region@(Reg _ links tunels) c1 c2 | cityInR region c1 && cityInR region c2 && linkedR region c1 c2 = delayT tunel 
+                                         | otherwise = error "Las ciudades no existen o no estan conectadas"
+                                             where tunel = head [x | x <- tunels, connectsT c1 c2 x]
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
-availableCapacityForR x y z = 1
+availableCapacityForR region@(Reg _ links tunels) c1 c2 = (capacityL link) - tunnelsOccuping tunels link
+   where link = findLink links c1 c2
 
-{-
--- Esta funcion no es necesaria. (Quizas) Depende de como manejemos construir el tunel
-validT :: [Link] -> [City] -> Bool
-validT links [c1, c2] = linkedR links c1 c2 -- Ver como optimizar, atajar casos de listas con <1 ciudad
-validT links (x:y:xs) = linkedR links x y && validT links (y:xs) -- Esto está mal
--}
+tunnelsOccuping :: [Tunel] -> Link -> Int
+tunnelsOccuping [] link = 0
+tunnelsOccuping tunels link = length [x | x <- tunels, usesT link x]
+
 
 getLinks :: [Link] -> [City] -> [Link]
 getLinks links [x, y] = [findLink links x y] -- Ver como optimizar, atajar casos de listas con <1 ciudad
