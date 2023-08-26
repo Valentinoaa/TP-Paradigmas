@@ -1,4 +1,4 @@
-module Link (Link, newL, linksL, connectsL, capacityL, delayL )
+module Link ( Link, newL, linksL, connectsL, capacityL, delayL )
    where
 
 import City
@@ -20,10 +20,4 @@ capacityL :: Link -> Int
 capacityL (Lin _ _ qua) = capacityQ qua
 
 delayL :: Link -> Float     -- la demora que sufre una conexion en este canal
-delayL (Lin _ _ qua) = delayQ qua
-
-t = [newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5) == Lin (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5),
-     connectsL (newC "la matanza" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)),
-     linksL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)),
-     capacityL (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == 2,
-     delayL (newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)) == 0.5]
+delayL (Lin c1 c2 qua) = delayQ qua * distanceC c1 c2 

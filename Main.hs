@@ -18,7 +18,7 @@ city3 = newC "Florencio Varela" point3
 
 test_city = [city1 /= city2, nameC city1 == "La Matanza", distanceC city1 city2 == 5]
 
-quality1 = newQ "alta" 2 0.5
+quality1 = newQ "alta" 2 0
 
 test_quality = [quality1 /= newQ "baja" 1 0.2, capacityQ quality1 == 2, delayQ quality1 == 0.5]
 
