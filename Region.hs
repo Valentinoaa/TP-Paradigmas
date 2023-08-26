@@ -43,7 +43,8 @@ delayR region@(Reg _ links tunels) c1 c2 | cityInR region c1 && cityInR region c
                                              where tunel = head [x | x <- tunels, connectsT c1 c2 x]
 
 availableCapacityForR :: Region -> City -> City -> Int -- indica la capacidad disponible entre dos ciudades
-availableCapacityForR region@(Reg _ links tunels) c1 c2 = (capacityL link) - tunnelsOccuping tunels link
+availableCapacityForR region@(Reg _ links tunels) c1 c2 | cityInR region c1 && cityInR region c2 && connectedR region c1 c2 = capacityL link - tunnelsOccuping tunels link
+                                                        | otherwise = error "Las ciudades no están en la región o no estan conectadas"
    where link = findLink links c1 c2
 
 tunnelsOccuping :: [Tunel] -> Link -> Int
@@ -62,4 +63,6 @@ findLink [] c1 c2 = error "No existe el link"
 findLink [x] c1 c2 = if linksL c1 c2 x then x else error "No existe el link"
 findLink (x:y:xs) c1 c2 = if linksL c1 c2 x then x else findLink (y:xs) c1 c2
 
-test = [findLink [newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5), newL (newC "carlos" (newP 4 5)) (newC "la matanza" (newP 4 5)) (newQ "alta" 2 0.5)] (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) == newL (newC "la matanza" (newP 4 5)) (newC "carlos" (newP 4 5)) (newQ "alta" 2 0.5)]
+exists :: [a] -> a -> Bool
+exists [] _ = False
+
