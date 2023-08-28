@@ -18,9 +18,9 @@ city3 = newC "Florencio Varela" point3
 
 test_city = [city1 /= city2, nameC city1 == "La Matanza", distanceC city1 city2 == 5]
 
-quality1 = newQ "alta" 2 0
+quality1 = newQ "Cobre" 2 0.5
 
-test_quality = [quality1 /= newQ "baja" 1 0.2, capacityQ quality1 == 2, delayQ quality1 == 0.5]
+test_quality = [quality1 /= newQ "Cobre" 1 0.2, capacityQ quality1 == 2, delayQ quality1 == 0.5]
 
 link1 = newL city1 city2 quality1
 link2 = newL city2 city3 quality1
@@ -36,11 +36,16 @@ regionCities = foundR (foundR (foundR region1 city1) city2) city3
 regionLinks = linkR (linkR regionCities city1 city2 quality1) city2 city3 quality1
 regionTunels = tunelR regionLinks [city1, city2, city3]
 
+regionTunels2 = tunelR regionTunels [city1, city2]
+
+
+
 test_region = [  
                linkedR regionTunels city1 city2, 
                not (linkedR regionTunels city1 city3), 
                linkedR regionTunels city2 city3, 
                delayR regionTunels city1 city2 == (2.5 + sqrt 34 * 0.5),
                availableCapacityForR regionTunels city1 city2 == 1,
-               availableCapacityForR regionTunels city2 city3 == 1 -- Deberia tirar Error 
-               {-availableCapacityForR regionTunels city1 city3 == 2-}] -- False
+               availableCapacityForR regionTunels2 city1 city2 == 0]
+
+allTests = [test_point, test_city, test_quality, test_link, test_tunel, test_region]
