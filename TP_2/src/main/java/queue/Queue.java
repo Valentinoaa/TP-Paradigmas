@@ -1,26 +1,25 @@
 package queue;
 
+import javax.management.RuntimeErrorException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Queue {
-
+	public static final String QUEUE_IS_EMPTY = "Queue is empty";
 	public List<Object> list = new ArrayList<>();
 
   public boolean isEmpty() {
-		// TODO Auto-generated method stub
-
 		return list.isEmpty();
 	}
 
 	public Queue add( Object  cargo ) {
-		// TODO Auto-generated method stub
 		list.add(cargo);
 		return this;
 	}
 
 	public Object take() {
-    // TODO Auto-generated method stub
+		checkIfCargoIsEmpty();
+
 		Object first = list.get(0);
 		list.remove(0);
 
@@ -28,13 +27,17 @@ public class Queue {
 	}
 
 	public Object head() {
-		// TODO Auto-generated method stub
-    return list.get(0);
+		checkIfCargoIsEmpty();
+    	return list.get(0);
 	}
 
 	public int size() {
-		// TODO Auto-generated method stub
 		return list.size();
 	}
 
+	private void checkIfCargoIsEmpty() {
+		if (list.isEmpty()) {
+			throw new Error(QUEUE_IS_EMPTY);
+		}
+	}
 }
