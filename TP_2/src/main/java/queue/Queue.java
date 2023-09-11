@@ -1,6 +1,5 @@
 package queue;
 
-import javax.management.RuntimeErrorException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,10 +19,7 @@ public class Queue {
 	public Object take() {
 		checkIfCargoIsEmpty();
 
-		Object first = list.get(0);
-		list.remove(0);
-
-		return first;
+		return list.remove(0);
 	}
 
 	public Object head() {
