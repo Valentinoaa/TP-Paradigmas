@@ -22,20 +22,19 @@ public class Queue {
 	public Object take() {
     // TODO Auto-generated method stub
 		Object first = list.get(0);
+		list.remove(0);
 
-		return list.get(0);
-		return null;
+		return first;
 	}
 
 	public Object head() {
 		// TODO Auto-generated method stub
-		list.
-    return null;
+    return list.get(0);
 	}
 
 	public int size() {
 		// TODO Auto-generated method stub
-		return 0;
+		return list.size();
 	}
 
 }
