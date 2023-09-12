@@ -1,7 +1,7 @@
 package queue;
 
 public class Queue {
-	public Dude first = new ToxicDude();
+	public QueueState first = new EmptyQueue();
 
 	public boolean isEmpty() {
 		return first.isempty();
@@ -14,7 +14,7 @@ public class Queue {
 
 	public Object take() {
 		Object info = first.head();
-		first = (Dude) first.take();
+		first = (QueueState) first.take();
 		return info;
 	}
 

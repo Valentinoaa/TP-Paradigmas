@@ -1,13 +1,13 @@
 package queue;
 
-public class GoodDude extends Dude{
-    GoodDude (Object info, Dude previous){
+public class NotEmptyQueue extends QueueState {
+    NotEmptyQueue(Object info, QueueState previous){
         this.info = info;
         this.previous = previous;
     }
     @Override
-    public Dude add(Object  cargo ){
-        return new GoodDude(info, previous.add(cargo));
+    public QueueState add(Object  cargo ){
+        return new NotEmptyQueue(info, previous.add(cargo));
     }
     @Override
     public Object take() {

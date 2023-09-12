@@ -1,10 +1,10 @@
 package queue;
 
-public class ToxicDude extends Dude{
+public class EmptyQueue extends QueueState {
     public static final String QUEUE_IS_EMPTY = "Queue is empty";
     @Override
-    public Dude add(Object  cargo ){
-        return new GoodDude(cargo, this);
+    public QueueState add(Object  cargo ){
+        return new NotEmptyQueue(cargo, this);
     }
     @Override
     public Object take() {
