@@ -1,7 +1,6 @@
 package queue;
 
 public class Queue {
-	public static final String QUEUE_IS_EMPTY = "Queue is empty";
 	public Dude first = new ToxicDude();
 
 	public boolean isEmpty() {
