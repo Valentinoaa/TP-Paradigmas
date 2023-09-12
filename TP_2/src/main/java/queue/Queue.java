@@ -1,39 +1,30 @@
 package queue;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Queue {
 	public static final String QUEUE_IS_EMPTY = "Queue is empty";
-	public List<Object> list = new ArrayList<>();
+	public Dude first = new ToxicDude();
 
-  public boolean isEmpty() {
-		return list.isEmpty();
+	public boolean isEmpty() {
+		return first.isempty();
 	}
 
 	public Queue add( Object  cargo ) {
-		list.add(cargo);
+		first = first.add(cargo);
 		return this;
 	}
 
 	public Object take() {
-		checkIfCargoIsEmpty();
-
-		return list.remove(0);
+		Object info = first.head();
+		first = (Dude) first.take();
+		return info;
 	}
 
 	public Object head() {
-		checkIfCargoIsEmpty();
-    	return list.get(0);
+    	return first.head();
 	}
 
 	public int size() {
-		return list.size();
+		return first.Size();
 	}
 
-	private void checkIfCargoIsEmpty() {
-		if (list.isEmpty()) {
-			throw new Error(QUEUE_IS_EMPTY);
-		}
-	}
 }
