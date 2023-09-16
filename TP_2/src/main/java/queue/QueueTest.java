@@ -8,34 +8,29 @@ import org.junit.jupiter.api.Test;
 
 public class QueueTest {
 
-  @Test public void test01QueueShouldBeEmptyWhenCreated() {
+  @Test public void newQueueIsEmpty() {
     assertTrue( new Queue().isEmpty() );
   }
-
-  @Test public void test02AddElementsToTheQueue() {
-    assertFalse( new Queue().add( "Something" ).isEmpty() );
+  @Test public void addElements() {
+    assertFalse( QueueWithSomething().isEmpty() );
+  }
+  @Test public void addedElementInHead() {
+    assertEquals( "Something", QueueWithSomething().head() );
   }
 
-  @Test public void test03AddedElementsIsAtHead() {
-    assertEquals( "Something", new Queue().add( "Something" ).head() );
+  @Test public void TakeRemovesFirst() {
+    QueueWithSomething().take();
+    assertTrue( QueueWithSomething().isEmpty() );
   }
 
-  @Test public void test04TakeRemovesElementsFromTheQueue() {
-    Queue queue = new Queue().add( "Something" );
-    queue.take();
-    
-    assertTrue( queue.isEmpty() );
-  }
-
-  @Test public void test05TakeReturnsLastAddedObject() {
+  @Test public void TakeReturnsLastObject() {
     Queue queue = new Queue();
     String addedObject = "Something";
     queue.add( addedObject );
-    
     assertEquals( addedObject, queue.take() );
   }
 
-  @Test public void test06QueueBehavesFIFO() {
+  @Test public void QueueBehavesFIFO() {
     Queue queue = new Queue();
     String firstAddedObject = "First";
     String secondAddedObject = "Second";
@@ -48,7 +43,7 @@ public class QueueTest {
     assertTrue( queue.isEmpty() );
   }
 
-  @Test public void test07HeadReturnsFirstAddedObject() {
+  @Test public void HeadReturnsFirstInQueue() {
     Queue queue = new Queue();
     String firstAddedObject = "First";
 
@@ -100,5 +95,8 @@ public class QueueTest {
     } catch (Error e) {
       assertTrue( e.getMessage().equals( "Queue is empty" ) );
     }
+  }
+  private static Queue QueueWithSomething() {
+    return new Queue().add("Something");
   }
 }
