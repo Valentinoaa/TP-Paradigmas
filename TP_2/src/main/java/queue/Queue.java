@@ -1,7 +1,7 @@
 package queue;
 
 public class Queue {
-	public QueueState first = new EmptyQueue();
+	public ElementState first = new EmptyElement();
 
 	public boolean isEmpty() {
 		return first.isempty();
@@ -14,7 +14,7 @@ public class Queue {
 
 	public Object take() {
 		Object info = first.head();
-		first = (QueueState) first.take();
+		first = (ElementState) first.take();
 		return info;
 	}
 

@@ -1,10 +1,10 @@
 package queue;
 
-public abstract class QueueState {
+public abstract class ElementState {
     public Object info;
-    public QueueState previous;
+    public ElementState previous;
 
-    public abstract QueueState add(Object cargo);
+    public abstract ElementState add(Object cargo);
     public abstract Object take();
     public abstract Object head();
     public abstract boolean isempty();

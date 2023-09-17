@@ -1,13 +1,13 @@
 package queue;
 
-public class NotEmptyQueue extends QueueState {
-    NotEmptyQueue(Object info, QueueState previous){
+public class NotEmptyElement extends ElementState {
+    NotEmptyElement(Object info, ElementState previous){
         this.info = info;
         this.previous = previous;
     }
     @Override
-    public QueueState add(Object  cargo ){
-        return new NotEmptyQueue(info, previous.add(cargo));
+    public ElementState add(Object  cargo ){
+        return new NotEmptyElement(info, previous.add(cargo));
     }
     @Override
     public Object take() {
