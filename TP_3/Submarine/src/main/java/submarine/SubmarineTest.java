@@ -17,7 +17,7 @@ public class SubmarineTest {
 
     @Test public void testOrientation() {
         Submarine sub = new Submarine();
-        assertEquals(sub.getOrientation(), "N");
+        assertEquals(sub.getOrientation(), 'N');
     }
 
     @Test public void testSubmarineDoesntMoveWithNoIndications() {
@@ -25,6 +25,13 @@ public class SubmarineTest {
         sub.move("");
         assertEquals(sub.position_x(), 0);
         assertEquals(sub.position_y(), 0);
+    }
+
+    @Test public void testSubmarineMovesForward() {
+        Submarine sub = new Submarine();
+        sub.move("F");
+        assertEquals(sub.position_x(), 0);
+        assertEquals(sub.position_y(), 1);
     }
 
 

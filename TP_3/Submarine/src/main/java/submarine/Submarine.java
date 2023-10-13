@@ -1,28 +1,31 @@
 package submarine;
+import submarine.coordinates.Axis;
+import submarine.coordinates.Orientation;
+import submarine.movement.Commands;
 
 public class Submarine {
 
-    public Coordinates coordinates;
+    public Axis axis;
     public Orientation orientation;
 
-    public Submarine() {
-        coordinates = new Coordinates();
-    }
+    public Commands commands;
 
-    public int getDepth() {
-        return coordinates.getZ();
+
+    public Submarine() {
+        axis = new Axis();
+        orientation = new Orientation();
     }
 
     public int position_x() {
-        return coordinates.getX();
+        return axis.getX();
     }
 
     public int position_y() {
-        return coordinates.getY();
+        return axis.getY();
     }
 
-    public String getOrientation(){
-        return orientation;
+    public char getOrientation() {
+        return orientation.getGPS();
     }
 
     public void move(String directions){
@@ -31,21 +34,10 @@ public class Submarine {
         }
         for (int i = 0; i < directions.length(); i++) {
             char direction = directions.charAt(i);
-            if (direction == 'L') {
-                turnLeft();
-            } else if (direction == 'R') {
-                turnRight();
-            } else if (direction == 'U') {
-                moveUp();
-            } else if (direction == 'D') {
-                moveDown();
-            } else if (direction == 'F') {
-                moveForward();
-            } else if (direction == 'B') {
-                moveBackward();
-            } else {
-                throw new IllegalArgumentException("Invalid direction");
-            }
+            commands.availableCommands
+                    .stream()
+                    .filter(command -> command.equalsType(direction))
+                    .forEach(command -> command.move());
         }
     }
 
