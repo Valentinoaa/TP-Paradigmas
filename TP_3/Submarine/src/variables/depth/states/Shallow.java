@@ -1,14 +1,17 @@
 package variables.depth.states;
+
 import variables.depth.DepthState;
 
-public class Surface extends DepthState {
+public class Shallow extends DepthState {
+    int value = -1;
+
     @Override
     public DepthState descend() {
-        return new Shallow();
+        return null;
     }
 
     @Override
-    public void ascend(){
+    public void ascend() {
 
     }
 }

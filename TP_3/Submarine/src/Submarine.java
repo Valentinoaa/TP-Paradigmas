@@ -1,11 +1,13 @@
 import variables.axis.*;
 import variables.capsule.*;
-import variables.depth.Depth;
+import variables.depth.DepthState;
 import commands.*;
+import variables.depth.states.Surface;
+
 import java.util.ArrayList;
 
 public class Submarine {
-    public Depth z = new Depth();
+    public DepthState z = new Surface();
     public Coordinates coords = new Coordinates();
     public Capsule capsule = new Capsule();
     public ArrayList<Runnable> actions = new ArrayList<>();
@@ -33,6 +35,7 @@ public class Submarine {
     public boolean isCapsule(){
         return capsule.value;
     }
+
     public int getDepth() {
         return z.getDepth();
     }
