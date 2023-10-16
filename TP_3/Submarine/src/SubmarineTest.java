@@ -1,9 +1,11 @@
 import org.junit.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertThrows;
-import static org.junit.jupiter.api.Assertions.assertTrue;
-import org.junit.jupiter.api.BeforeEach;
+
+import org.junit.jupiter.api.function.Executable;
+import variables.coordinates.Point;
+import variables.coordinates.cardinals.*;
+import variables.depth.states.Deep;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class SubmarineTest {
@@ -18,17 +20,35 @@ public class SubmarineTest {
     }
 
     @Test
-    public void testDescend() {
-        Submarine sub = new Submarine();
-        sub.move("D");
-        assertEquals(sub.getDepth(), -1);
+   public void test02InvalidCommand() {
+      Submarine sub = new Submarine(new Point(0, 0), new North());
+      sub.move("x");  // no hay error del tipo "x is not a valid command"
+      assertEquals(sub.getDepth(), 0);
+        assertEquals(sub.getX(), 0);
+        assertEquals(sub.getY(), 0);
     }
 
     @Test
-    public void testAscend() {
-        Submarine sub = new Submarine();
-        sub.move("DA");
+    public void test03SubmarineDoesntMoveWithVoidCommand(){
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("");
         assertEquals(sub.getDepth(), 0);
+        assertEquals(sub.getX(), 0);
+        assertEquals(sub.getY(), 0);
+    }
+
+    @Test
+    public void test04Descend() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("DDDD");
+        assertEquals(sub.getDepth(), -4);
+    }
+
+    @Test
+    public void test05Ascend() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("DDDDA");
+        assertEquals(sub.getDepth(), -3);
     }
 
 
@@ -54,6 +74,21 @@ public class SubmarineTest {
     }
 
     @Test
+    public void test09TurnRight() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("R");
+        assertEquals(sub.getOrientation(), 'E');
+    }
+
+    @Test
+    public void test10ReleaseCapsule(){
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("M");
+        assertFalse(sub.isCapsule());
+    }
+
+
+    @Test
     public void testTurnAndMoveForward() {
         Submarine sub = new Submarine();
         sub.move("LF");
@@ -68,12 +103,18 @@ public class SubmarineTest {
         assertEquals(sub.getOrientation(), 'N');
     }
 
+
     @Test
-    public void testReleaseCapsule() {
-        Submarine sub = new Submarine();
-        sub.move("M");
-        assertFalse(sub.isCapsule());
+    public void test13CantReleaseCapsule() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
+        sub.move("DDDD");
+        assertThrowsLike(() -> sub.move("M") , Deep.cannotReleaseCapsuleFromDeepState);
     }
 
+    private void assertThrowsLike( Executable executable, String message ) {
+
+        assertEquals( message,
+                assertThrows( Exception.class, executable).getMessage() );
+    }
 
 }

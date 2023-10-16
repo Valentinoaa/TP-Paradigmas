@@ -1,4 +1,4 @@
-package variables.axis;
+package variables.coordinates;
 
 public class Point {
     int x;

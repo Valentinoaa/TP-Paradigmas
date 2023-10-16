@@ -1,6 +1,6 @@
-package variables.axis.cardinals;
+package variables.coordinates.cardinals;
 
-import variables.axis.Point;
+import variables.coordinates.Point;
 
 public class South extends Cardinal{
     @Override

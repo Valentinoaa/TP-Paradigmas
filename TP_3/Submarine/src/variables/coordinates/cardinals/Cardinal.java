@@ -1,5 +1,5 @@
-package variables.axis.cardinals;
-import variables.axis.Point;
+package variables.coordinates.cardinals;
+import variables.coordinates.Point;
 public abstract class Cardinal {
 
     public abstract Cardinal previous();

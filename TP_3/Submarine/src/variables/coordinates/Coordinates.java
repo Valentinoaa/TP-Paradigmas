@@ -1,13 +1,15 @@
-package variables.axis;
+package variables.coordinates;
 
-import variables.axis.cardinals.Cardinal;
+import variables.coordinates.cardinals.Cardinal;
 
 public class Coordinates {
     public Point axis;
     public Orientation compass = new Orientation();
 
-    public Coordinates(){
-        axis = new Point(0, 0);
+    public Coordinates(Point point, Cardinal cardinal){
+        axis = point;
+        this.orientation = cardinal;
+
     }
 
     public int getX(){
@@ -19,23 +21,23 @@ public class Coordinates {
     }
 
     public char getOrientation(){
-        return compass.getOrientation();
+        return orientation.toChar();
     }
 
     public void Forward(){
-        axis.add(compass.forward());
+        axis.add(orientation.forward());
     }
 
     public void Backward(){
-        axis.add(compass.backward());
+        axis.add(orientation.backward());
     }
 
     public void Left(){
-        compass.turnLeft();
+        orientation = orientation.previous();
     }
 
     public void Right(){
-        compass.turnRight();
+        orientation = orientation.next();
     }
 
 

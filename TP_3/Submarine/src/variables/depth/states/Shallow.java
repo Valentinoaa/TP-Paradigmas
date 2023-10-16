@@ -11,7 +11,14 @@ public class Shallow extends DepthState {
     }
 
     @Override
-    public void ascend() {
-
+    public DepthState ascend() {
+        return new Surface();
     }
+
+    @Override
+    public void releaseCapsule() {
+        capsule.release();
+    }
+
+
 }

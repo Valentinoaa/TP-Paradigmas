@@ -1,4 +1,5 @@
 package variables.capsule;
+import variables.depth.states.*;
 
 public class Capsule {
     public boolean value = true;

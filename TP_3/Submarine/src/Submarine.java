@@ -1,5 +1,6 @@
-import variables.axis.*;
+import variables.coordinates.*;
 import variables.capsule.*;
+import variables.coordinates.cardinals.Cardinal;
 import variables.depth.DepthState;
 import commands.*;
 import variables.depth.states.Surface;
@@ -21,7 +22,8 @@ public class Submarine {
         actions.add(() -> coords.Backward());
         actions.add(() -> coords.Left());
         actions.add(() -> coords.Right());
-        actions.add(() -> capsule.release());
+        // Dudoso 🤔🤔🤔 👇
+        actions.add(() -> z.releaseCapsule());
         availableCommands.add(new Descend());
         availableCommands.add(new Ascend());
         availableCommands.add(new Forward());
@@ -54,14 +56,13 @@ public class Submarine {
 
     public void move(String directions){
 
-        for (int i = 0; i < directions.length(); i++) {
-            char direction = directions.charAt(i);
+        directions.chars()
+                .mapToObj(direction -> (char) direction)
+                .forEach(direction -> availableCommands.stream()
+                        .filter(command -> command.equalsType(direction))
+                        .forEach(command -> actions.get(availableCommands.indexOf(command)).run()));
 
-            availableCommands
-                    .stream()
-                    .filter(command -> command.equalsType(direction))
-                    .forEach(command -> actions.get(availableCommands.indexOf(command)).run());
-        }
+    }
     }
 
 
