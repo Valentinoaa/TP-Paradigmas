@@ -20,4 +20,9 @@ public class Orientation {
         direction = direction.next();
     }
 
+    public Point forward() { return direction.forward();
+    }
+
+    public Point backward() { return direction.backward();
+    }
 }

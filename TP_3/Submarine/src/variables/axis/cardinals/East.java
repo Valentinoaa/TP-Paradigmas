@@ -1,5 +1,7 @@
 package variables.axis.cardinals;
 
+import variables.axis.Point;
+
 public class East extends Cardinal{
     @Override
     public Cardinal previous() {
@@ -14,5 +16,15 @@ public class East extends Cardinal{
     @Override
     public char toChar() {
         return 'E';
+    }
+
+    @Override
+    public Point forward() {
+        return new Point(1, 0);
+    }
+
+    @Override
+    public Point backward() {
+        return new Point(-1, 0);
     }
 }

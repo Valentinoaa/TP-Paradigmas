@@ -18,38 +18,24 @@ public class Coordinates {
         return axis.getY();
     }
 
+    public char getOrientation(){
+        return compass.getOrientation();
+    }
+
     public void Forward(){
-        if (compass.getOrientation() == 'N'){
-            axis.add(new Point(0, 1));
-        }
-        else if (compass.getOrientation() == 'E'){
-            axis.add(new Point(1, 0));
-        }
-        else if (compass.getOrientation() == 'S'){
-            axis.add(new Point(0, -1));
-        }
-        else if (compass.getOrientation() == 'W'){
-            axis.add(new Point(-1, 0));
-        }
+        axis.add(compass.forward());
     }
 
     public void Backward(){
-        if (compass.getOrientation() == 'N'){
-            axis.add(new Point(0, -1));
-        }
-        else if (compass.getOrientation() == 'E'){
-            axis.add(new Point(-1, 0));
-        }
-        else if (compass.getOrientation() == 'S'){
-            axis.add(new Point(0, 1));
-        }
-        else if (compass.getOrientation() == 'W'){
-            axis.add(new Point(1, 0));
-        }
+        axis.add(compass.backward());
     }
 
     public void Left(){
         compass.turnLeft();
+    }
+
+    public void Right(){
+        compass.turnRight();
     }
 
 

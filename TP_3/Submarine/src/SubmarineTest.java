@@ -14,6 +14,7 @@ public class SubmarineTest {
         assertEquals(sub.getX(), 0);
         assertEquals(sub.getY(), 0);
         assertEquals(sub.getOrientation(), 'N');
+        assertTrue(sub.isCapsule());
     }
 
     @Test
@@ -58,6 +59,20 @@ public class SubmarineTest {
         sub.move("LF");
         assertEquals(sub.getX(), -1);
         assertEquals(sub.getY(), 0);
+    }
+
+    @Test
+    public void test360DegreesTurn() {
+        Submarine sub = new Submarine();
+        sub.move("LLLLRL");
+        assertEquals(sub.getOrientation(), 'N');
+    }
+
+    @Test
+    public void testReleaseCapsule() {
+        Submarine sub = new Submarine();
+        sub.move("M");
+        assertFalse(sub.isCapsule());
     }
 
 
