@@ -9,15 +9,17 @@ import java.util.ArrayList;
 
 public class Submarine {
     public DepthState z = new Surface();
-    public Coordinates coords = new Coordinates();
+    public Coordinates coords;
     public Capsule capsule = new Capsule();
     public ArrayList<Runnable> actions = new ArrayList<>();
     public ArrayList<Commands> availableCommands = new ArrayList<>();
 
 
-    public Submarine() {
-        actions.add(() -> z.descend());
-        actions.add(() -> z.ascend());
+    public Submarine(Point point, Cardinal cardinal) {
+        coords = new Coordinates(point, cardinal);
+
+        actions.add(() -> z= z.descend());
+        actions.add(() -> z = z.ascend());
         actions.add(() -> coords.Forward());
         actions.add(() -> coords.Backward());
         actions.add(() -> coords.Left());
@@ -64,8 +66,3 @@ public class Submarine {
 
     }
     }
-
-
-
-
-}

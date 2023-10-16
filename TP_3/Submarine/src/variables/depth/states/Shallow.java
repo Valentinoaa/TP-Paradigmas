@@ -3,11 +3,15 @@ package variables.depth.states;
 import variables.depth.DepthState;
 
 public class Shallow extends DepthState {
-    int value = -1;
+
+    public Shallow(){
+        this.value = -1;
+    }
+    DepthState previous = new Surface();
 
     @Override
     public DepthState descend() {
-        return null;
+        return new Deep(this.value -1, this);
     }
 
     @Override

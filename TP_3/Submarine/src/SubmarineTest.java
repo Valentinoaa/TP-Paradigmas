@@ -10,11 +10,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class SubmarineTest {
     @Test
-    public void testNewSubmarinePosition() {
-        Submarine sub = new Submarine();
+    public void test01NewSubmarinePosition() {
+        Submarine sub = new Submarine(new Point(1, 1), new North());
         assertEquals(sub.getDepth(), 0);
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 0);
+        assertEquals(sub.getX(), 1);
+        assertEquals(sub.getY(), 1);
         assertEquals(sub.getOrientation(), 'N');
         assertTrue(sub.isCapsule());
     }
@@ -53,22 +53,22 @@ public class SubmarineTest {
 
 
     @Test
-    public void testMoveForward() {
-        Submarine sub = new Submarine();
+    public void test06MoveForward() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
         sub.move("F");
         assertEquals(sub.getX(), 0);
         assertEquals(sub.getY(), 1);
     }
     @Test
-    public void testMoveBackward() {
-        Submarine sub = new Submarine();
+    public void test07MoveBackward() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
         sub.move("B");
         assertEquals(sub.getX(), 0);
         assertEquals(sub.getY(), -1);
     }
     @Test
-    public void testTurnLeft() {
-        Submarine sub = new Submarine();
+    public void test08TurnLeft() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
         sub.move("L");
         assertEquals(sub.getOrientation(), 'W');
     }
@@ -89,16 +89,16 @@ public class SubmarineTest {
 
 
     @Test
-    public void testTurnAndMoveForward() {
-        Submarine sub = new Submarine();
+    public void test11TurnAndMoveForward() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
         sub.move("LF");
         assertEquals(sub.getX(), -1);
         assertEquals(sub.getY(), 0);
     }
 
     @Test
-    public void test360DegreesTurn() {
-        Submarine sub = new Submarine();
+    public void test12SubmarineTurns360Degrees() {
+        Submarine sub = new Submarine(new Point(0, 0), new North());
         sub.move("LLLLRL");
         assertEquals(sub.getOrientation(), 'N');
     }

@@ -4,7 +4,7 @@ import variables.coordinates.cardinals.Cardinal;
 
 public class Coordinates {
     public Point axis;
-    public Orientation compass = new Orientation();
+    public Cardinal orientation;
 
     public Coordinates(Point point, Cardinal cardinal){
         axis = point;
