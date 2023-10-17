@@ -18,7 +18,7 @@ public class Submarine {
     public Submarine(Point point, Cardinal cardinal) {
         coords = new Coordinates(point, cardinal);
 
-        actions.add(() -> z= z.descend());
+        actions.add(() -> z = z.descend());
         actions.add(() -> z = z.ascend());
         actions.add(() -> coords.Forward());
         actions.add(() -> coords.Backward());
@@ -57,12 +57,13 @@ public class Submarine {
     }
 
     public void move(String directions){
-
         directions.chars()
-                .mapToObj(direction -> (char) direction)
-                .forEach(direction -> availableCommands.stream()
-                        .filter(command -> command.equalsType(direction))
-                        .forEach(command -> actions.get(availableCommands.indexOf(command)).run()));
+                .forEach(direction -> {
+                    char directionChar = (char) direction;
+                    availableCommands.stream()
+                            .filter(command -> command.equalsType(directionChar))
+                            .forEach(command -> actions.get(availableCommands.indexOf(command)).run());
+        });
+    }
 
-    }
-    }
+}
