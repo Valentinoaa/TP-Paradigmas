@@ -19,9 +19,4 @@ public class North extends Cardinal {
         return new Point(0, 1);
     }
 
-    @Override
-    public Point backward() {
-        return new Point(0, -1);
-    }
-
 }

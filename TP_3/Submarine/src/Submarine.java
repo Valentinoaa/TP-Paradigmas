@@ -21,7 +21,6 @@ public class Submarine {
         actions.add(() -> z = z.descend());
         actions.add(() -> z = z.ascend());
         actions.add(() -> coords.Forward());
-        actions.add(() -> coords.Backward());
         actions.add(() -> coords.Left());
         actions.add(() -> coords.Right());
         // Dudoso 🤔🤔🤔 👇
@@ -29,7 +28,6 @@ public class Submarine {
         availableCommands.add(new Descend());
         availableCommands.add(new Ascend());
         availableCommands.add(new Forward());
-        availableCommands.add(new Backward());
         availableCommands.add(new Left());
         availableCommands.add(new Right());
         availableCommands.add(new ReleaseCapsule());

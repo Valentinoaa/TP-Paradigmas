@@ -28,10 +28,6 @@ public class Coordinates {
         axis.add(orientation.forward());
     }
 
-    public void Backward(){
-        axis.add(orientation.backward());
-    }
-
     public void Left(){
         orientation = orientation.previous();
     }

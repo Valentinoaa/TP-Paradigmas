@@ -16,7 +16,7 @@ public class Shallow extends DepthState {
 
     @Override
     public DepthState ascend() {
-        return new Surface();
+        return previous;
     }
 
     @Override

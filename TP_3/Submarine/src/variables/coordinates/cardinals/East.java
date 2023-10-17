@@ -22,9 +22,4 @@ public class East extends Cardinal{
     public Point forward() {
         return new Point(1, 0);
     }
-
-    @Override
-    public Point backward() {
-        return new Point(-1, 0);
-    }
 }

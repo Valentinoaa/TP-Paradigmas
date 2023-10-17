@@ -61,13 +61,13 @@ public class SubmarineTest {
         assertEquals(sub.getX(), 0);
         assertEquals(sub.getY(), 1);
     }
+
     @Test
-    public void test07MoveBackward() {
+    public void test07SubmarineCanReleaseCapsuleAtSurface() {
         Submarine sub = submarineAtOriginFacingNorth();
-        sub.move("B");
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), -1);
+        sub.move("M");
     }
+
     @Test
     public void test08TurnLeft() {
         Submarine sub = submarineAtOriginFacingNorth();
@@ -130,16 +130,10 @@ public class SubmarineTest {
     }
 
     @Test
-    public void test16SubmarineCanReleaseCapsuleAtSurface() {
-        Submarine sub = submarineAtOriginFacingNorth();
-        sub.move("M");
-    }
-
-    @Test
-    public void test17SubmarineCanReleaseCapsuleAtShallowDepth() {
+    public void test16SubmarineCanReleaseCapsuleAtShallowDepth() {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DM");
-        assertEquals(sub.getDepth(), 0);
+        assertEquals(sub.getDepth(), -1);
         assertEquals(sub.getX(), 0);
         assertEquals(sub.getY(), 0);
         assertEquals(sub.getOrientation(), 'N');
