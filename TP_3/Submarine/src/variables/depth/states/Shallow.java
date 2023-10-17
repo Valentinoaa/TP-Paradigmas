@@ -21,7 +21,6 @@ public class Shallow extends DepthState {
 
     @Override
     public void releaseCapsule() {
-        capsule.release();
     }
 
 

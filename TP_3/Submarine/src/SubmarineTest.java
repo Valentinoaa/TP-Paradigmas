@@ -16,7 +16,6 @@ public class SubmarineTest {
         assertEquals(sub.getX(), 1);
         assertEquals(sub.getY(), 1);
         assertEquals(sub.getOrientation(), 'N');
-        assertTrue(sub.isCapsule());
     }
 
     @Test

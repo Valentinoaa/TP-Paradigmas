@@ -10,7 +10,6 @@ import java.util.ArrayList;
 public class Submarine {
     public DepthState z = new Surface();
     public Coordinates coords;
-    public Capsule capsule = new Capsule();
     public ArrayList<Runnable> actions = new ArrayList<>();
     public ArrayList<Commands> availableCommands = new ArrayList<>();
 
@@ -32,10 +31,6 @@ public class Submarine {
         availableCommands.add(new Right());
         availableCommands.add(new ReleaseCapsule());
 
-    }
-
-    public boolean isCapsule(){
-        return capsule.value;
     }
 
     public int getDepth() {

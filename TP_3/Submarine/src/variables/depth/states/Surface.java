@@ -18,6 +18,5 @@ public class Surface extends DepthState {
 
     @Override
     public void releaseCapsule() {
-        capsule.release();
     }
 }
