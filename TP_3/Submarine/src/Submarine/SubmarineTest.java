@@ -1,3 +1,5 @@
+package Submarine;
+
 import org.junit.Test;
 
 import org.junit.jupiter.api.function.Executable;
