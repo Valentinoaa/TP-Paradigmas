@@ -1,143 +1,150 @@
 package Submarine;
 
+import org.junit.Before;
 import org.junit.Test;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.function.Executable;
+import variables.coordinates.Coordinates;
 import variables.coordinates.Point;
-import variables.coordinates.cardinals.*;
+import variables.coordinates.cardinals.Cardinal;
+import variables.coordinates.cardinals.East;
+import variables.coordinates.cardinals.North;
+import variables.coordinates.cardinals.South;
+import variables.coordinates.cardinals.West;
 import variables.depth.states.Deep;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 
 public class SubmarineTest {
+
+    Submarine sub;
+    @Before
+    public void SetUp(){
+        sub = submarineAtOriginFacingNorth();
+    }
+
     @Test
     public void test01NewSubmarinePosition() {
-        Submarine sub = new Submarine(new Point(1, 1), new North());
-        assertEquals(sub.getDepth(), 0);
-        assertEquals(sub.getX(), 1);
-        assertEquals(sub.getY(), 1);
-        assertEquals(sub.getOrientation(), 'N');
+        sub = new Submarine(new Point(3, 2), new South());
+        checkSubmarinePosition(new Point(3, 2), new South(), 0);
     }
 
     @Test
    public void test02InvalidCommand() {
-      Submarine sub = submarineAtOriginFacingNorth();
-      sub.move("x");  // no hay error del tipo "x is not a valid command"
-      assertEquals(sub.getDepth(), 0);
-      assertEquals(sub.getX(), 0);
-      assertEquals(sub.getY(), 0);
-      assertEquals(sub.getOrientation(), 'N');
+        sub.move("x");  // no hay error del tipo "x is not a valid command"
+        checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
     @Test
     public void test03SubmarineDoesntMoveWithVoidCommand(){
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("");
-        assertEquals(sub.getDepth(), 0);
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 0);
-        assertEquals(sub.getOrientation(), 'N');
+        checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
     @Test
     public void test04Descend() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DDDD");
-        assertEquals(sub.getDepth(), -4);
+        checkSubmarinePosition(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test05Ascend() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DDDDA");
-        assertEquals(sub.getDepth(), -3);
+        checkSubmarinePosition(new Point(0, 0), new North(), -3);
     }
 
 
     @Test
     public void test06MoveForward() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("F");
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 1);
+        checkSubmarinePosition(new Point(0, 1), new North(), 0);
     }
 
     @Test
     public void test07SubmarineCanReleaseCapsuleAtSurface() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("M");
+        checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
     @Test
     public void test08TurnLeft() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("L");
-        assertEquals(sub.getOrientation(), 'W');
+        checkSubmarinePosition(new Point(0, 0), new West(), 0);
     }
 
     @Test
     public void test09TurnRight() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("R");
-        assertEquals(sub.getOrientation(), 'E');
+        checkSubmarinePosition(new Point(0, 0), new East(), 0);
     }
 
     @Test
     public void test10TurnAndMoveForward() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("LF");
-        assertEquals(sub.getX(), -1);
-        assertEquals(sub.getY(), 0);
+        checkSubmarinePosition(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test11SubmarineTurns360Degrees() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("LLLLRL");
-        assertEquals(sub.getOrientation(), 'N');
+        checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
 
     @Test
     public void test12CantReleaseCapsule() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DDDD");
-        assertThrowsLike(() -> sub.move("M") , Deep.cannotReleaseCapsuleFromDeepState);
+        assertThrowsLike(() -> sub.move("M"), Deep.cannotReleaseCapsuleFromDeepState);
+        checkSubmarinePosition(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test13SubmarineMovesRightWhenFacingEast() {
-        Submarine sub = new Submarine(new Point(0, 0), new East());
+        sub = new Submarine(new Point(0, 0), new East());
         sub.move("F");
-        assertEquals(sub.getX(), 1);
-        assertEquals(sub.getY(), 0);
+        checkSubmarinePosition(new Point(1, 0), new East(), 0);
     }
 
     @Test
     public void test14SubmarineMovesLeftWhenFacingWest() {
-        Submarine sub = new Submarine(new Point(0, 0), new West());
+        sub = new Submarine(new Point(0, 0), new West());
         sub.move("F");
-        assertEquals(sub.getX(), -1);
-        assertEquals(sub.getY(), 0);
+        checkSubmarinePosition(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test15SubmarineMovesBackwardWhenFacingSouth() {
-        Submarine sub = new Submarine(new Point(0, 0), new South());
+        sub = new Submarine(new Point(0, 0), new South());
         sub.move("F");
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), -1);
+        checkSubmarinePosition(new Point(0, -1), new South(), 0);
     }
 
     @Test
     public void test16SubmarineCanReleaseCapsuleAtShallowDepth() {
-        Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DM");
-        assertEquals(sub.getDepth(), -1);
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 0);
-        assertEquals(sub.getOrientation(), 'N');
+        checkSubmarinePosition(new Point(0, 0), new North(), -1);
+    }
+
+    @Test
+    public void test17CommandsAreNotCaseSensitive(){
+        sub.move("fF");
+        checkSubmarinePosition(new Point(0, 2), new North(), 0);
+    }
+
+    @Test
+    public void test18SubmarineCantGoFurtherThanDepthZero(){
+        sub.move("aaaaaaaaaaa");
+        checkSubmarinePosition(new Point(0, 0), new North(), 0);
+    }
+
+    @Test
+    public void test19SubmarineCanRecieveCommandsInChar(){
+        sub.move('d');
+        checkSubmarinePosition(new Point(0, 0), new North(), -1);
     }
 
     private void assertThrowsLike( Executable executable, String message ) {
@@ -146,8 +153,12 @@ public class SubmarineTest {
                 assertThrows( Exception.class, executable).getMessage() );
     }
 
-    private static Submarine submarineAtOriginFacingNorth() {
+    private Submarine submarineAtOriginFacingNorth() {
         return new Submarine(new Point(0, 0), new North());
+    }
+
+    private void checkSubmarinePosition(Point point, Cardinal cardinal, int depth) {
+        assertTrue(sub.areCoordinatesEqual(new Coordinates(point, cardinal), depth));
     }
 
 }

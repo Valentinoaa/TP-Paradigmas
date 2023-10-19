@@ -1,6 +1,7 @@
 package Submarine;
 
-import variables.coordinates.*;
+import variables.coordinates.Coordinates;
+import variables.coordinates.Point;
 import variables.coordinates.cardinals.Cardinal;
 import variables.depth.DepthState;
 import variables.depth.states.Surface;
@@ -30,14 +31,21 @@ public class Submarine {
         return coords.getOrientation();
     }
 
+    public void move(Character direction){
+        this.move(direction.toString());
+    }
     public void move(String directions){
-        directions.chars()
+        directions.toLowerCase().chars()
                 .forEach(direction -> {
                     char directionChar = (char) direction;
                     Commands.availableCommands.stream()
                             .filter(command -> command.equalsType(directionChar))
                             .forEach(command -> command.runAction(this));
         });
+    }
+
+    public boolean areCoordinatesEqual(Coordinates coordinates, Integer depth){
+        return this.coords.areCoordinatesEqual(coordinates) && this.z.getDepth() == depth;
     }
 
 }

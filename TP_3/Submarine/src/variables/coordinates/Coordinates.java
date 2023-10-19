@@ -36,6 +36,10 @@ public class Coordinates {
         orientation = orientation.next();
     }
 
+    public boolean areCoordinatesEqual(Coordinates coordinates){
+        return this.axis.equals(coordinates.axis) && this.orientation.equals(coordinates.orientation);
+    }
+
 
 
 }

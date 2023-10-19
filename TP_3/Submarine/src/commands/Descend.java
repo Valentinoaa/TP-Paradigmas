@@ -5,7 +5,7 @@ import Submarine.Submarine;
 public class Descend extends Commands{
     @Override
     public boolean equalsType(char instruction){
-        return instruction == 'D';
+        return instruction == 'd';
     }
 
     @Override

@@ -22,4 +22,6 @@ public class East extends Cardinal{
     public Point forward() {
         return new Point(1, 0);
     }
+
+
 }

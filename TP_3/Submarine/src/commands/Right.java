@@ -5,7 +5,7 @@ import Submarine.Submarine;
 public class Right extends Commands{
     @Override
     public boolean equalsType(char instruction) {
-        return instruction == 'R';
+        return instruction == 'r';
     }
 
     @Override

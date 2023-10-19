@@ -6,7 +6,7 @@ public class Forward extends Commands{
 
     @Override
     public boolean equalsType(char instruction) {
-        return instruction == 'F';
+        return instruction == 'f';
     }
 
     @Override

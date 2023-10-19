@@ -20,4 +20,8 @@ public class Point {
         this.x += p.getX();
         this.y += p.getY();
     }
+
+    public boolean equals(Point point){
+        return this.x == point.getX() && this.y == point.getY();
+    }
 }
