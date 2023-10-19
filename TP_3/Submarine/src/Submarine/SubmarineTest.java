@@ -6,8 +6,8 @@ import org.junit.jupiter.api.function.Executable;
 import variables.coordinates.Point;
 import variables.coordinates.cardinals.*;
 import variables.depth.states.Deep;
-
 import static org.junit.jupiter.api.Assertions.*;
+
 
 
 public class SubmarineTest {
@@ -103,7 +103,7 @@ public class SubmarineTest {
     public void test12CantReleaseCapsule() {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DDDD");
-        assertThrowsLike(() -> sub.move("M") , Deep.cannotReleaseCapsuleFromDeepState);
+        assertThrowsLike(() -> sub.move("M"));
     }
 
     @Test
@@ -140,9 +140,9 @@ public class SubmarineTest {
         assertEquals(sub.getOrientation(), 'N');
     }
 
-    private void assertThrowsLike( Executable executable, String message ) {
+    private void assertThrowsLike( Executable executable ) {
 
-        assertEquals( message,
+        assertEquals(Deep.cannotReleaseCapsuleFromDeepState,
                 assertThrows( Exception.class, executable).getMessage() );
     }
 

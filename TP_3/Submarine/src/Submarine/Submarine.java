@@ -31,13 +31,43 @@ public class Submarine {
     }
 
     public void move(String directions){
-        directions.chars()
+        directions.toUpperCase().chars()
                 .forEach(direction -> {
                     char directionChar = (char) direction;
                     Commands.availableCommands.stream()
                             .filter(command -> command.equalsType(directionChar))
                             .forEach(command -> command.runAction(this));
+
         });
     }
+
+    public void move(Character direction) {
+        this.move(direction.toString());
+    }
+
+    public void descend(){
+        z = z.descend();
+    }
+
+    public void ascend(){
+        z = z.ascend();
+    }
+
+    public void forward(){
+        coords.forward();
+    }
+
+    public void right(){
+        coords.right();
+    }
+
+    public void left(){
+        coords.left();
+    }
+
+    public void releaseCapsule(){
+        z.releaseCapsule();
+    }
+
 
 }

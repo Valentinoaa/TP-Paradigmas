@@ -11,6 +11,6 @@ public class Left extends Commands{
 
     @Override
     public void runAction(Submarine submarine){
-        submarine.coords.Left();
+        submarine.left();
     }
 }

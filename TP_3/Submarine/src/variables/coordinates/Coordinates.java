@@ -24,16 +24,16 @@ public class Coordinates {
         return orientation.toChar();
     }
 
-    public void Forward(){
+    public void forward(){
         axis.add(orientation.forward());
     }
 
-    public void Left(){
-        orientation = orientation.previous();
+    public void left(){
+        orientation = orientation.left();
     }
 
-    public void Right(){
-        orientation = orientation.next();
+    public void right(){
+        orientation = orientation.right();
     }
 
 

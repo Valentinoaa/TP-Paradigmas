@@ -1,5 +1,4 @@
 package commands;
-
 import Submarine.Submarine;
 
 public class Forward extends Commands{
@@ -11,7 +10,8 @@ public class Forward extends Commands{
 
     @Override
     public void runAction(Submarine submarine){
-        submarine.coords.Forward();
+        submarine.forward();
     }
+
 
 }
