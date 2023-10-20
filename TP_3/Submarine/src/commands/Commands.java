@@ -15,7 +15,10 @@ public abstract class Commands {
             new ReleaseCapsule());
 
 
-    public abstract boolean equalsType(char instruction);
+    char type;
+    public boolean equalsType(char instruction){
+        return type == instruction;
+    }
 
     public abstract void runAction(Submarine submarine);
 

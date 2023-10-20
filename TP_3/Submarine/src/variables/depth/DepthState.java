@@ -15,8 +15,8 @@ public abstract class DepthState {
 
     public abstract void releaseCapsule();
 
-    public boolean equals(DepthState depth){
-        return this.value == depth.value;
-    }
+//    public boolean equals(DepthState depth){
+//        return this.value == depth.value;
+//    }
 
 }

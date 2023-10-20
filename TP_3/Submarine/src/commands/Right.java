@@ -10,6 +10,6 @@ public class Right extends Commands{
 
     @Override
     public void runAction(Submarine submarine){
-        submarine.coords.Right();
+        submarine.right();
     }
 }

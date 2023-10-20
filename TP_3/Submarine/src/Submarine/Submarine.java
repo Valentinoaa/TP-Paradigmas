@@ -8,32 +8,13 @@ import variables.depth.states.Surface;
 import commands.Commands;
 
 public class Submarine {
-    public DepthState z = new Surface();
-    public Coordinates coords;
+    private DepthState z = new Surface();
+    private Coordinates coords;
 
     public Submarine(Point point, Cardinal cardinal) {
         coords = new Coordinates(point, cardinal);
     }
 
-    public int getDepth() {
-        return z.getDepth();
-    }
-
-    public int getX() {
-        return coords.getX();
-    }
-
-    public int getY() {
-        return coords.getY();
-    }
-
-    public char getOrientation(){
-        return coords.getOrientation();
-    }
-
-    public void move(Character direction){
-        this.move(direction.toString());
-    }
     public void move(String directions){
         directions.toLowerCase().chars()
                 .forEach(direction -> {
@@ -47,5 +28,34 @@ public class Submarine {
     public boolean areCoordinatesEqual(Coordinates coordinates, Integer depth){
         return this.coords.areCoordinatesEqual(coordinates) && this.z.getDepth() == depth;
     }
+
+    public void move(Character direction) {
+        this.move(direction.toString());
+    }
+
+    public void descend(){
+        z = z.descend();
+    }
+
+    public void ascend(){
+        z = z.ascend();
+    }
+
+    public void forward(){
+        coords.Forward();
+    }
+
+    public void right(){
+        coords.Right();
+    }
+
+    public void left(){
+        coords.Left();
+    }
+
+    public void releaseCapsule(){
+        z.releaseCapsule();
+    }
+
 
 }

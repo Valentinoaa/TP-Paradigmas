@@ -9,8 +9,8 @@ public class Descend extends Commands{
     }
 
     @Override
-    public void runAction(Submarine submarine){
-        submarine.z = submarine.z.descend();
+    public void runAction(Submarine submarine) {
+        submarine.descend();
     }
 
 
