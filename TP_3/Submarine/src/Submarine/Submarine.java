@@ -1,36 +1,30 @@
 package Submarine;
 
-import variables.coordinates.Coordinates;
-import variables.coordinates.Point;
-import variables.coordinates.cardinals.Cardinal;
+import variables.position.Position;
+import variables.position.Point;
+import variables.position.cardinals.Cardinal;
 import variables.depth.DepthState;
 import variables.depth.states.Surface;
 import commands.Commands;
 
 public class Submarine {
     private DepthState z = new Surface();
-    private Coordinates coords;
+    private Position position;
 
     public Submarine(Point point, Cardinal cardinal) {
-        coords = new Coordinates(point, cardinal);
+        position = new Position(point, cardinal);
     }
 
-    public void move(String directions){
-        directions.toLowerCase().chars()
-                .forEach(direction -> {
-                    char directionChar = (char) direction;
-                    Commands.availableCommands.stream()
-                            .filter(command -> command.equalsType(directionChar))
-                            .forEach(command -> command.runAction(this));
-        });
+    public void move(String instructions){
+        instructions.chars().forEach(instruction -> this.move((char) instruction));
     }
 
-    public boolean areCoordinatesEqual(Coordinates coordinates, Integer depth){
-        return this.coords.areCoordinatesEqual(coordinates) && this.z.getDepth() == depth;
+    public void move(char instruction){
+        Commands.commandFor(instruction).forEach(commands -> commands.runAction(this));
     }
 
-    public void move(Character direction) {
-        this.move(direction.toString());
+    public boolean areCoordinatesEqual(Position position, Integer depth){
+        return this.position.areCoordinatesEqual(position) && this.z.getDepth() == depth;
     }
 
     public void descend(){
@@ -42,15 +36,15 @@ public class Submarine {
     }
 
     public void forward(){
-        coords.Forward();
+        position.Forward();
     }
 
     public void right(){
-        coords.Right();
+        position.Right();
     }
 
     public void left(){
-        coords.Left();
+        position.Left();
     }
 
     public void releaseCapsule(){

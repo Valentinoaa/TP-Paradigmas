@@ -4,13 +4,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.junit.jupiter.api.function.Executable;
-import variables.coordinates.Coordinates;
-import variables.coordinates.Point;
-import variables.coordinates.cardinals.Cardinal;
-import variables.coordinates.cardinals.East;
-import variables.coordinates.cardinals.North;
-import variables.coordinates.cardinals.South;
-import variables.coordinates.cardinals.West;
+import variables.position.Position;
+import variables.position.Point;
+import variables.position.cardinals.Cardinal;
+import variables.position.cardinals.East;
+import variables.position.cardinals.North;
+import variables.position.cardinals.South;
+import variables.position.cardinals.West;
 import variables.depth.states.Deep;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -46,102 +46,96 @@ public class SubmarineTest {
 
     @Test
     public void test04Descend() {
-        sub.move("DDDD");
+        sub.move("dddd");
         isSubmarineAt(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test05Ascend() {
-        sub.move("DDDDA");
+        sub.move("dddda");
         isSubmarineAt(new Point(0, 0), new North(), -3);
     }
 
 
     @Test
     public void test06MoveForward() {
-        sub.move("F");
+        sub.move("f");
         isSubmarineAt(new Point(0, 1), new North(), 0);
     }
 
     @Test
     public void test07SubmarineCanReleaseCapsuleAtSurface() {
-        sub.move("M");
+        sub.move("m");
         isSubmarineAt(new Point(0, 0), new North(), 0);
     }
 
     @Test
     public void test08TurnLeft() {
-        sub.move("L");
+        sub.move("l");
         isSubmarineAt(new Point(0, 0), new West(), 0);
     }
 
     @Test
     public void test09TurnRight() {
-        sub.move("R");
+        sub.move("r");
         isSubmarineAt(new Point(0, 0), new East(), 0);
     }
 
     @Test
     public void test10TurnAndMoveForward() {
-        sub.move("LF");
+        sub.move("lf");
         isSubmarineAt(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test11SubmarineTurns360Degrees() {
-        sub.move("LLLLRL");
+        sub.move("llllrl");
         isSubmarineAt(new Point(0, 0), new North(), 0);
     }
 
 
     @Test
     public void test12CantReleaseCapsule() {
-        sub.move("DDDD");
-        assertThrowsLike(() -> sub.move("M"), Deep.cannotReleaseCapsuleFromDeepState);
+        sub.move("dddd");
+        assertThrowsLike(() -> sub.move("m"), Deep.cannotReleaseCapsuleFromDeepState);
         isSubmarineAt(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test13SubmarineMovesRightWhenFacingEast() {
         sub = new Submarine(new Point(0, 0), new East());
-        sub.move("F");
+        sub.move("f");
         isSubmarineAt(new Point(1, 0), new East(), 0);
     }
 
     @Test
     public void test14SubmarineMovesLeftWhenFacingWest() {
         sub = new Submarine(new Point(0, 0), new West());
-        sub.move("F");
+        sub.move("f");
         isSubmarineAt(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test15SubmarineMovesBackwardWhenFacingSouth() {
         sub = new Submarine(new Point(0, 0), new South());
-        sub.move("F");
+        sub.move("f");
         isSubmarineAt(new Point(0, -1), new South(), 0);
     }
 
     @Test
     public void test16SubmarineCanReleaseCapsuleAtShallowDepth() {
-        sub.move("DM");
+        sub.move("dm");
         isSubmarineAt(new Point(0, 0), new North(), -1);
     }
 
     @Test
-    public void test17CommandsAreNotCaseSensitive(){
-        sub.move("fF");
-        isSubmarineAt(new Point(0, 2), new North(), 0);
-    }
-
-    @Test
-    public void test18SubmarineCantGoFurtherThanDepthZero(){
+    public void test17SubmarineCantGoFurtherThanDepthZero(){
         sub.move("aaaaaaaaaaa");
         isSubmarineAt(new Point(0, 0), new North(), 0);
     }
 
     @Test
-    public void test19SubmarineCanRecieveCommandsInChar(){
+    public void test18SubmarineCanRecieveCommandsInChar(){
         sub.move('d');
         isSubmarineAt(new Point(0, 0), new North(), -1);
     }
@@ -157,7 +151,7 @@ public class SubmarineTest {
     }
 
     private void isSubmarineAt(Point point, Cardinal cardinal, int depth) {
-        assertTrue(sub.areCoordinatesEqual(new Coordinates(point, cardinal), depth));
+        assertTrue(sub.areCoordinatesEqual(new Position(point, cardinal), depth));
     }
 
 }

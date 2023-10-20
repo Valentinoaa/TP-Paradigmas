@@ -5,13 +5,13 @@ import variables.depth.DepthState;
 public class Shallow extends DepthState {
 
     public Shallow(){
-        this.value = -1;
+        this.depth = -1;
     }
     DepthState previous = new Surface();
 
     @Override
     public DepthState descend() {
-        return new Deep(this.value -1, this);
+        return new Deep(this.depth -1, this);
     }
 
     @Override

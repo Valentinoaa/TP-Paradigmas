@@ -1,12 +1,12 @@
 package variables.depth;
 
 public abstract class DepthState {
-    public int value;
+    public int depth;
 
     public DepthState previous;
 
     public int getDepth(){
-        return this.value;
+        return this.depth;
     }
 
     public abstract DepthState descend();
@@ -14,9 +14,5 @@ public abstract class DepthState {
     public abstract DepthState ascend();
 
     public abstract void releaseCapsule();
-
-//    public boolean equals(DepthState depth){
-//        return this.value == depth.value;
-//    }
 
 }

@@ -1,5 +1,5 @@
-package variables.coordinates.cardinals;
-import variables.coordinates.Point;
+package variables.position.cardinals;
+import variables.position.Point;
 public abstract class Cardinal {
 
     public abstract Cardinal previous();

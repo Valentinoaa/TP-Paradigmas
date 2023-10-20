@@ -3,6 +3,7 @@ package commands;
 import Submarine.Submarine;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
 public abstract class Commands {
 
@@ -14,7 +15,11 @@ public abstract class Commands {
             new Right(),
             new ReleaseCapsule());
 
+    public static Stream<Commands> commandFor(Character instruction){
+        return availableCommands.stream()
+                .filter(command -> command.equalsType(instruction));
 
+    }
     char type;
     public boolean equalsType(char instruction){
         return type == instruction;

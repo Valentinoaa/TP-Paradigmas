@@ -7,13 +7,13 @@ public class Deep extends DepthState {
     public static final String cannotReleaseCapsuleFromDeepState = "Cannot release capsule from deep state";
 
     public Deep(int value, DepthState previous){
-        this.value = value;
+        this.depth = value;
         this.previous =  previous;
     }
 
     @Override
     public DepthState descend() {
-        return new Deep(this.value -1, this);
+        return new Deep(this.depth -1, this);
     }
 
     @Override

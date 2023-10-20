@@ -3,7 +3,7 @@ import variables.depth.DepthState;
 
 public class Surface extends DepthState {
     public Surface(){
-        this.value = 0;
+        this.depth = 0;
     }
 
     @Override

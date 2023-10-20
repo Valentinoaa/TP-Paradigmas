@@ -1,6 +1,6 @@
-package variables.coordinates.cardinals;
+package variables.position.cardinals;
 
-import variables.coordinates.Point;
+import variables.position.Point;
 
 public class West extends Cardinal {
     @Override
