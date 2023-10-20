@@ -9,9 +9,11 @@ public abstract class DepthState {
         return this.depth;
     }
 
-    public abstract DepthState descend();
+    public DepthState ascend(){
+        return previous;
+    }
 
-    public abstract DepthState ascend();
+    public abstract DepthState descend();
 
     public abstract void releaseCapsule();
 
