@@ -5,7 +5,7 @@ import Submarine.Submarine;
 public class ReleaseCapsule extends Commands{
     @Override
     public boolean equalsType(char instruction) {
-        return instruction == 'M';
+        return instruction == 'm';
     }
 
     @Override

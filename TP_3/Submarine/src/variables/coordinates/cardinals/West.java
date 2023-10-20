@@ -22,4 +22,5 @@ public class West extends Cardinal {
     public Point forward() {
         return new Point(-1, 0);
     }
+
 }

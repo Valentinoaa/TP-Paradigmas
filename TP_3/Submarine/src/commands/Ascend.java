@@ -6,7 +6,7 @@ public class Ascend extends Commands {
 
     @Override
     public boolean equalsType(char instruction) {
-        return instruction == 'A';
+        return instruction == 'a';
     }
 
     @Override
