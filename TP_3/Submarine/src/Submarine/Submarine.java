@@ -18,31 +18,20 @@ public class Submarine {
         return z.getDepth();
     }
 
-    public int getX() {
-        return coords.getX();
-    }
-
-    public int getY() {
-        return coords.getY();
+    public Point getPoint() {
+        return coords.axis;
     }
 
     public char getOrientation(){
         return coords.getOrientation();
     }
 
-    public void move(String directions){
-        directions.toUpperCase().chars()
-                .forEach(direction -> {
-                    char directionChar = (char) direction;
-                    Commands.availableCommands.stream()
-                            .filter(command -> command.equalsType(directionChar))
-                            .forEach(command -> command.runAction(this));
-
-        });
+    public void move(String instructions){
+        instructions.chars().forEach(instruction -> this.move((char) instruction));
     }
 
-    public void move(Character direction) {
-        this.move(direction.toString());
+    public void move(char instruction){
+        Commands.commandFor(instruction).runAction(this);
     }
 
     public void descend(){

@@ -16,6 +16,10 @@ public class Point {
         return this.y;
     }
 
+    public boolean equals(Point p){
+        return this.x == p.getX() && this.y == p.getY();
+    }
+
     public void add(Point p){
         this.x += p.getX();
         this.y += p.getY();

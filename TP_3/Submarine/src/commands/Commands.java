@@ -14,7 +14,12 @@ public abstract class Commands {
             new Right(),
             new ReleaseCapsule());
 
-
+    public static Commands commandFor(Character instruction){
+        return availableCommands.stream()
+                .filter(command -> command.equalsType(instruction))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("Invalid command"));
+    }
     char type;
     public boolean equalsType(char instruction){
         return type == instruction;

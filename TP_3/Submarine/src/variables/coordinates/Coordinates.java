@@ -12,14 +12,9 @@ public class Coordinates {
 
     }
 
-    public int getX(){
-        return axis.getX();
+    public Point getPoint() {
+        return axis;
     }
-
-    public int getY(){
-        return axis.getY();
-    }
-
     public char getOrientation(){
         return orientation.toChar();
     }

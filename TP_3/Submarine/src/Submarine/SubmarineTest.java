@@ -15,18 +15,15 @@ public class SubmarineTest {
     public void test01NewSubmarinePosition() {
         Submarine sub = new Submarine(new Point(1, 1), new North());
         assertEquals(sub.getDepth(), 0);
-        assertEquals(sub.getX(), 1);
-        assertEquals(sub.getY(), 1);
+        assertTrue(sub.getPoint().equals(new Point(1, 1)));
         assertEquals(sub.getOrientation(), 'N');
     }
 
     @Test
    public void test02InvalidCommand() {
       Submarine sub = submarineAtOriginFacingNorth();
-      sub.move("x");  // no hay error del tipo "x is not a valid command"
       assertEquals(sub.getDepth(), 0);
-      assertEquals(sub.getX(), 0);
-      assertEquals(sub.getY(), 0);
+      assertTrue(sub.getPoint().equals(new Point(0, 0)));
       assertEquals(sub.getOrientation(), 'N');
     }
 
@@ -35,8 +32,7 @@ public class SubmarineTest {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("");
         assertEquals(sub.getDepth(), 0);
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 0);
+        assertTrue(sub.getPoint().equals(new Point(0, 0)));
         assertEquals(sub.getOrientation(), 'N');
     }
 
@@ -59,8 +55,8 @@ public class SubmarineTest {
     public void test06MoveForward() {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("F");
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 1);
+        assertTrue(sub.getPoint().equals(new Point(0, 1)));
+
     }
 
     @Test
@@ -87,8 +83,8 @@ public class SubmarineTest {
     public void test10TurnAndMoveForward() {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("LF");
-        assertEquals(sub.getX(), -1);
-        assertEquals(sub.getY(), 0);
+        assertTrue(sub.getPoint().equals(new Point(-1, 0)));
+
     }
 
     @Test
@@ -110,24 +106,24 @@ public class SubmarineTest {
     public void test13SubmarineMovesRightWhenFacingEast() {
         Submarine sub = new Submarine(new Point(0, 0), new East());
         sub.move("F");
-        assertEquals(sub.getX(), 1);
-        assertEquals(sub.getY(), 0);
+        assertTrue(sub.getPoint().equals(new Point(1, 0)));
+
     }
 
     @Test
     public void test14SubmarineMovesLeftWhenFacingWest() {
         Submarine sub = new Submarine(new Point(0, 0), new West());
         sub.move("F");
-        assertEquals(sub.getX(), -1);
-        assertEquals(sub.getY(), 0);
+        assertTrue(sub.getPoint().equals(new Point(-1, 0)));
+
     }
 
     @Test
     public void test15SubmarineMovesBackwardWhenFacingSouth() {
         Submarine sub = new Submarine(new Point(0, 0), new South());
         sub.move("F");
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), -1);
+        assertTrue(sub.getPoint().equals(new Point(0, -1)));
+
     }
 
     @Test
@@ -135,8 +131,7 @@ public class SubmarineTest {
         Submarine sub = submarineAtOriginFacingNorth();
         sub.move("DM");
         assertEquals(sub.getDepth(), -1);
-        assertEquals(sub.getX(), 0);
-        assertEquals(sub.getY(), 0);
+        assertTrue(sub.getPoint().equals(new Point(0, 0)));
         assertEquals(sub.getOrientation(), 'N');
     }
 
