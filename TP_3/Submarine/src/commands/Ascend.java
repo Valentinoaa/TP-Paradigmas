@@ -11,7 +11,7 @@ public class Ascend extends Commands {
 
     @Override
     public void runAction(Submarine submarine){
-        submarine.z = submarine.z.ascend();
+        submarine.ascend();
     }
 
 }

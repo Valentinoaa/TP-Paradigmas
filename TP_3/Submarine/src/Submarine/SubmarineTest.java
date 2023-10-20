@@ -3,7 +3,6 @@ package Submarine;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.function.Executable;
 import variables.coordinates.Coordinates;
 import variables.coordinates.Point;
@@ -13,10 +12,10 @@ import variables.coordinates.cardinals.North;
 import variables.coordinates.cardinals.South;
 import variables.coordinates.cardinals.West;
 import variables.depth.states.Deep;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
 
 
 public class SubmarineTest {
@@ -147,9 +146,9 @@ public class SubmarineTest {
         checkSubmarinePosition(new Point(0, 0), new North(), -1);
     }
 
-    private void assertThrowsLike( Executable executable, String message ) {
+    private void assertThrowsLike(Executable executable, String message) {
 
-        assertEquals( message,
+        assertEquals(message,
                 assertThrows( Exception.class, executable).getMessage() );
     }
 

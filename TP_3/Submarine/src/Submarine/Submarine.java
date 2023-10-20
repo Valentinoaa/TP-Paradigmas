@@ -41,11 +41,37 @@ public class Submarine {
                     Commands.availableCommands.stream()
                             .filter(command -> command.equalsType(directionChar))
                             .forEach(command -> command.runAction(this));
+
         });
     }
 
     public boolean areCoordinatesEqual(Coordinates coordinates, Integer depth){
         return this.coords.areCoordinatesEqual(coordinates) && this.z.getDepth() == depth;
+    }
+
+
+    public void descend(){
+        z = z.descend();
+    }
+
+    public void ascend(){
+        z = z.ascend();
+    }
+
+    public void forward(){
+        coords.forward();
+    }
+
+    public void right(){
+        coords.right();
+    }
+
+    public void left(){
+        coords.left();
+    }
+
+    public void releaseCapsule(){
+        z.releaseCapsule();
     }
 
 }

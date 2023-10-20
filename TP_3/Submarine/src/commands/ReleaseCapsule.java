@@ -10,6 +10,6 @@ public class ReleaseCapsule extends Commands{
 
     @Override
     public void runAction(Submarine submarine){
-        submarine.z.releaseCapsule();
+        submarine.releaseCapsule();
     }
 }

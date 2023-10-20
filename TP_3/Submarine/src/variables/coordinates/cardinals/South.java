@@ -4,12 +4,12 @@ import variables.coordinates.Point;
 
 public class South extends Cardinal{
     @Override
-    public Cardinal previous() {
+    public Cardinal left() {
         return new East();
     }
 
     @Override
-    public Cardinal next() {
+    public Cardinal right() {
         return new West();
     }
 
