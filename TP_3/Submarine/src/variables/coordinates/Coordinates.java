@@ -12,17 +12,17 @@ public class Coordinates {
 
     }
 
-    public int getX(){
-        return axis.getX();
-    }
-
-    public int getY(){
-        return axis.getY();
-    }
-
-    public char getOrientation(){
-        return orientation.toChar();
-    }
+//    public int getX(){
+//        return axis.getX();
+//    }
+//
+//    public int getY(){
+//        return axis.getY();
+//    }
+//
+//    public char getOrientation(){
+//        return orientation.toChar();
+//    }
 
     public void forward(){
         axis.add(orientation.forward());

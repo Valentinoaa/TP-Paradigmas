@@ -46,102 +46,96 @@ public class SubmarineTest {
 
     @Test
     public void test04Descend() {
-        sub.move("DDDD");
+        sub.move("dddd");
         checkSubmarinePosition(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test05Ascend() {
-        sub.move("DDDDA");
+        sub.move("dddda");
         checkSubmarinePosition(new Point(0, 0), new North(), -3);
     }
 
 
     @Test
     public void test06MoveForward() {
-        sub.move("F");
+        sub.move("f");
         checkSubmarinePosition(new Point(0, 1), new North(), 0);
     }
 
     @Test
     public void test07SubmarineCanReleaseCapsuleAtSurface() {
-        sub.move("M");
+        sub.move("m");
         checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
     @Test
     public void test08TurnLeft() {
-        sub.move("L");
+        sub.move("l");
         checkSubmarinePosition(new Point(0, 0), new West(), 0);
     }
 
     @Test
     public void test09TurnRight() {
-        sub.move("R");
+        sub.move("r");
         checkSubmarinePosition(new Point(0, 0), new East(), 0);
     }
 
     @Test
     public void test10TurnAndMoveForward() {
-        sub.move("LF");
+        sub.move("lf");
         checkSubmarinePosition(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test11SubmarineTurns360Degrees() {
-        sub.move("LLLLRL");
+        sub.move("llllrl");
         checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
 
     @Test
     public void test12CantReleaseCapsule() {
-        sub.move("DDDD");
-        assertThrowsLike(() -> sub.move("M"), Deep.cannotReleaseCapsuleFromDeepState);
+        sub.move("dddd");
+        assertThrowsLike(() -> sub.move("m"), Deep.cannotReleaseCapsuleFromDeepState);
         checkSubmarinePosition(new Point(0, 0), new North(), -4);
     }
 
     @Test
     public void test13SubmarineMovesRightWhenFacingEast() {
         sub = new Submarine(new Point(0, 0), new East());
-        sub.move("F");
+        sub.move("f");
         checkSubmarinePosition(new Point(1, 0), new East(), 0);
     }
 
     @Test
     public void test14SubmarineMovesLeftWhenFacingWest() {
         sub = new Submarine(new Point(0, 0), new West());
-        sub.move("F");
+        sub.move("f");
         checkSubmarinePosition(new Point(-1, 0), new West(), 0);
     }
 
     @Test
     public void test15SubmarineMovesBackwardWhenFacingSouth() {
         sub = new Submarine(new Point(0, 0), new South());
-        sub.move("F");
+        sub.move("f");
         checkSubmarinePosition(new Point(0, -1), new South(), 0);
     }
 
     @Test
     public void test16SubmarineCanReleaseCapsuleAtShallowDepth() {
-        sub.move("DM");
+        sub.move("dm");
         checkSubmarinePosition(new Point(0, 0), new North(), -1);
     }
 
     @Test
-    public void test17CommandsAreNotCaseSensitive(){
-        sub.move("fF");
-        checkSubmarinePosition(new Point(0, 2), new North(), 0);
-    }
-
-    @Test
-    public void test18SubmarineCantGoFurtherThanDepthZero(){
+    public void test17SubmarineCantGoFurtherThanDepthZero(){
         sub.move("aaaaaaaaaaa");
         checkSubmarinePosition(new Point(0, 0), new North(), 0);
     }
 
     @Test
-    public void test19SubmarineCanRecieveCommandsInChar(){
+    public void test18SubmarineCanRecieveCommandsInChar(){
         sub.move('d');
         checkSubmarinePosition(new Point(0, 0), new North(), -1);
     }
