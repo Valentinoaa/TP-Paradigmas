@@ -25,7 +25,7 @@ public class Position {
     }
 
     public boolean areCoordinatesEqual(Position position){
-        return this.axis.equals(position.axis) && this.orientation.equals(position.orientation);
+        return axis.equals(position.axis) && orientation.equals(position.orientation);
     }
 
 

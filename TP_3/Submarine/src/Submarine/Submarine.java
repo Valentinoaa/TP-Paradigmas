@@ -24,7 +24,7 @@ public class Submarine {
     }
 
     public boolean areCoordinatesEqual(Position position, Integer depth){
-        return this.position.areCoordinatesEqual(position) && this.z.getDepth() == depth;
+        return position.areCoordinatesEqual(position) && z.getDepth() == depth;
     }
 
     public void descend(){

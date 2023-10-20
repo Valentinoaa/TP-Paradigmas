@@ -18,7 +18,7 @@ public class Deep extends DepthState {
 
     @Override
     public DepthState ascend(){
-        return this.previous;
+        return previous;
     }
 
     @Override
