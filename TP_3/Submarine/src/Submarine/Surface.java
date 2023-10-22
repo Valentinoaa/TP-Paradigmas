@@ -1,5 +1,4 @@
-package variables.depth.states;
-import variables.depth.DepthState;
+package Submarine;
 
 public class Surface extends DepthState {
     public Surface(){

@@ -1,6 +1,4 @@
-package commands;
-
-import Submarine.Submarine;
+package Submarine;
 
 public class Right extends Commands{
     @Override

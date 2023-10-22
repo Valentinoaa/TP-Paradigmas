@@ -1,6 +1,4 @@
-package variables.position.cardinals;
-
-import variables.position.Point;
+package Submarine;
 
 public class South extends Cardinal{
     @Override

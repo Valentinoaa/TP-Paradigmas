@@ -4,14 +4,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import org.junit.jupiter.api.function.Executable;
-import variables.position.Position;
-import variables.position.Point;
-import variables.position.cardinals.Cardinal;
-import variables.position.cardinals.East;
-import variables.position.cardinals.North;
-import variables.position.cardinals.South;
-import variables.position.cardinals.West;
-import variables.depth.states.Deep;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
@@ -34,7 +26,7 @@ public class SubmarineTest {
 
     @Test
    public void test02InvalidCommand() {
-        sub.move("x");  // no hay error del tipo "x is not a valid command"
+        sub.move("x");
         isSubmarineAt(new Point(0, 0), new North(), 0);
     }
 
@@ -137,6 +129,12 @@ public class SubmarineTest {
     @Test
     public void test18SubmarineCanRecieveCommandsInChar(){
         sub.move('d');
+        isSubmarineAt(new Point(0, 0), new North(), -1);
+    }
+
+    @Test
+    public void test19SubmarineCanThrowMultipleCapsules(){
+        sub.move("mmmmmdmmmmmm");
         isSubmarineAt(new Point(0, 0), new North(), -1);
     }
 

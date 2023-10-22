@@ -1,6 +1,4 @@
-package variables.position;
-
-import variables.position.cardinals.Cardinal;
+package Submarine;
 
 public class Position {
     public Point axis;
@@ -24,7 +22,7 @@ public class Position {
         orientation = orientation.next();
     }
 
-    public boolean areCoordinatesEqual(Position position){
+    public boolean coordinatesEquals(Position position){
         return axis.equals(position.axis) && orientation.equals(position.orientation);
     }
 

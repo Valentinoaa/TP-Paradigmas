@@ -1,14 +1,7 @@
 package Submarine;
 
-import variables.position.Position;
-import variables.position.Point;
-import variables.position.cardinals.Cardinal;
-import variables.depth.DepthState;
-import variables.depth.states.Surface;
-import commands.Commands;
-
 public class Submarine {
-    private DepthState z = new Surface();
+    private DepthState depth = new Surface();
     private Position position;
 
     public Submarine(Point point, Cardinal cardinal) {
@@ -24,15 +17,15 @@ public class Submarine {
     }
 
     public boolean areCoordinatesEqual(Position position, Integer depth){
-        return position.areCoordinatesEqual(position) && z.getDepth() == depth;
+        return position.coordinatesEquals(position) && this.depth.getDepth() == depth;
     }
 
     public void descend(){
-        z = z.descend();
+        depth = depth.descend();
     }
 
     public void ascend(){
-        z = z.ascend();
+        depth = depth.ascend();
     }
 
     public void forward(){
@@ -48,7 +41,7 @@ public class Submarine {
     }
 
     public void releaseCapsule(){
-        z.releaseCapsule();
+        depth.releaseCapsule();
     }
 
 

@@ -1,5 +1,5 @@
-package variables.position.cardinals;
-import variables.position.Point;
+package Submarine;
+
 public abstract class Cardinal {
 
     public abstract Cardinal previous();

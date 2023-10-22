@@ -1,6 +1,5 @@
-package commands;
+package Submarine;
 
-import Submarine.Submarine;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
@@ -20,10 +19,8 @@ public abstract class Commands {
                 .filter(command -> command.equalsType(instruction));
 
     }
-    char type;
-    public boolean equalsType(char instruction){
-        return type == instruction;
-    }
+
+    public abstract boolean equalsType(char instruction);
 
     public abstract void runAction(Submarine submarine);
 

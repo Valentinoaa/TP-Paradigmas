@@ -1,6 +1,4 @@
-package variables.depth.states;
-
-import variables.depth.DepthState;
+package Submarine;
 
 public class Shallow extends DepthState {
 

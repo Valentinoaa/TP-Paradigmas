@@ -1,4 +1,4 @@
-package variables.depth;
+package Submarine;
 
 public abstract class DepthState {
     public int depth;

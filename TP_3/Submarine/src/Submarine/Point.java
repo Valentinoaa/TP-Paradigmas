@@ -1,4 +1,4 @@
-package variables.position;
+package Submarine;
 
 public class Point {
     int x;
