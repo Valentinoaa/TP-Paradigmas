@@ -1,6 +1,5 @@
 package Linea;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.BeforeEach;
 
@@ -16,11 +15,24 @@ public class LineaTest {
     }
 
     @Test
-    public void testLinea() {
-        assertEquals( 4, game.tablero.size() );
-        assertEquals( 0, game.tablero.get( 0 ).size() );
-        assertEquals( 0, game.tablero.get( 1 ).size() );
-        assertEquals( 0, game.tablero.get( 2 ).size() );
-        assertEquals( 0, game.tablero.get( 3 ).size() );
+    public void test01NewLinea() {
+        game = new Linea( 4, 4, 'C');
+        assertEquals( 4, game.boardColumns());
+        assertEquals( 0, game.columnChips( 0 ));
+        assertEquals( 0, game.columnChips( 1 ));
+        assertEquals( 0, game.columnChips( 2 ));
+        assertEquals( 0, game.columnChips( 3 ));
     }
+
+    @Test
+    public void test02PlayRed(){
+        game = new Linea( 4, 4, 'C');
+
+        assertEquals( 1, game.board.get( 0 ).size() );
+        assertEquals( 0, game.board.get( 1 ).size() );
+        assertEquals( 0, game.board.get( 2 ).size() );
+        assertEquals( 0, game.board.get( 3 ).size() );
+    }
+
+
 }
