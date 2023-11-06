@@ -1,4 +1,4 @@
-package Linea;
+package Linea.Game;
 
 public class Game {
 
@@ -14,23 +14,23 @@ public class Game {
 
 
 
-//        while ( !game.finished() ) {
-//
-//            game.playRedkAt( prompt( "Rojas? " ) );
-//
-//            System.out.println( game.show() );
-//
-//
-//
-//            if ( !game.finished() ) {
-//
-//                game.playBlueAt( prompt( "Azules? " ) );
-//
-//                System.out.println( game.show() );
-//
-////            }
-//
-//        }
+        while ( !game.finished() ) {
+
+           game.playRedAt( prompt( "Rojas? " ) );
+
+           System.out.println( game.show() );
+
+
+
+            if ( !game.finished() ) {
+
+                game.playBlueAt( prompt( "Azules? " ) );
+
+                System.out.println( game.show() );
+
+            }
+
+        }
 
 
 

@@ -1,4 +1,4 @@
-package Linea;
+package Linea.Game;
 
 public class Turn {
     public String turn;
@@ -11,12 +11,12 @@ public class Turn {
         return turn;
     }
 
-    public void changeTurn(){
-        if (turn == "R"){
-            turn = "B";
-        } else {
-            turn = "R";
-        }
+
+    public boolean itsRedTurn() {
+        return turn == "R";
     }
 
+    public boolean itsBlueTurn() {
+        return turn == "B";
+    }
 }
