@@ -40,7 +40,7 @@ public class Linea {
                 if (board.get(j).size() >= altura - i) {
                     line += " X ";
                 } else {
-                    line += " A ";
+                    line += getColumn(j).get(i);
                 }
             }
             result += line + " |\n";
@@ -54,9 +54,6 @@ public class Linea {
         return result;
     }
 
-    public int boardColumns() {
-        return base;
-    }
 
     public int columnChips(int column) {
         return board.get(column).size();
@@ -65,6 +62,7 @@ public class Linea {
     public ArrayList<Character> getColumn(int column) {
         return board.get(column);
     }
+
 
 
     public boolean finished() {
@@ -79,7 +77,13 @@ public class Linea {
             throw new RuntimeException("No es turno de rojo");
         } else {
             playRedChipIn(column);
-            if (fourInARowInColumn('R') {
+            if (fourInARowInColumn('R')) {
+                finished = true;
+            }
+            if (fourInARowInRow('R')) {
+                finished = true;
+            }
+            if (fourInARowInDiagonal('R')) {
                 finished = true;
             }
             setTurn("B");
@@ -87,13 +91,18 @@ public class Linea {
     }
 
 
+
     public void playBlueAt(int column) {
-        if (finished) throw new RuntimeException("El juego ya termino");
+        if (finished()) throw new RuntimeException("El juego ya termino");
+
         if (turn.itsRedTurn()) {
             throw new RuntimeException("No es turno de azul");
         } else {
             playBlueChipIn(column);
             if (fourInARowInColumn('B')) {
+                finished = true;
+            }
+            if (fourInARowInRow('B')) {
                 finished = true;
             }
             setTurn("R");
@@ -130,17 +139,16 @@ public class Linea {
     }
 
     private boolean fourInARowInColumn(char chip) {
-        for (int i = 0; i < boardColumns(); i++) {
+        for (int i = 0; i < base; i++) {
             ArrayList<Character> column = getColumn(i);
             int counter = 0;
 
-            for (int j = 0; j < column.size(); j++) {
-                if (column.get(j).equals(chip)) {
+            for (Character character : column) {
+                if (character.equals(chip)) {
                     counter += 1;
                 } else {
                     counter = 0;
                 }
-
             }
             if (counter >= 4) {
                 return true;
@@ -150,11 +158,47 @@ public class Linea {
     }
 
     public boolean fourInARowInRow(Character chip) {
-        for (int i = 0; i < boardColumns(); i++) {
-            for (int j = 0; i < boardColumns(); i++) {
-                if (board.get(i).get(j) == (chip)) {
+        for (int height = 0; height < base; height++) {
+            int counter = 0;
+            for (int j = 0; j < base; j++) {
+                ArrayList<Character> column = getColumn(j);
+                if (column.size() <= height ) {
+                    counter = 0;
+                }
+                else if (column.get(height) == (chip)) {
+                    counter += 1;
+                }
+                else{
+                    counter = 0;
+                }
+                if (counter >= 4) {
                     return true;
                 }
             }
+        }
+        return false;
+    }
+    private boolean fourInARowInDiagonal(char chip) {
+        for (int i = 0; i < base; i++) {
+            ArrayList<Character> column = getColumn(i);
+            int counter = 0;
+            for (Character character : column) {
+                if (character.equals(chip)) {
+                    counter += 1;
+                } else {
+                    counter = 0;
+                }
+            }
+            if (counter >= 4) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+
+    public int boardColumns() {
+        return base;
     }
 }

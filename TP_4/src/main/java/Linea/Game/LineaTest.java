@@ -87,11 +87,39 @@ public class LineaTest {
         assertThrows( RuntimeException.class, () -> game.playBlueAt( 1 ));
     }
 
+
     @Test
     public void test08BlueRowWins(){
+        game = new Linea( 6, 6, 'C');
+        game.playRedAt( 0 );
+        game.playBlueAt( 1 );
+        game.playRedAt( 0 );
+        game.playBlueAt( 2 );
+        game.playRedAt( 0 );
+        game.playBlueAt( 3 );
+        game.playRedAt( 5 );
+        game.playBlueAt( 4 );
+        assertTrue(game.finished());
+        assertThrows( RuntimeException.class, () -> game.playRedAt( 0 ));
+    }
+
+    @Test
+    public void test09RedDiagonalWins(){
         game = new Linea( 4, 4, 'C');
         game.playRedAt( 0 );
         game.playBlueAt( 1 );
+        game.playRedAt( 1 );
+        game.playBlueAt( 2 );
+        game.playRedAt( 2 );
+        game.playBlueAt( 3 );
+        game.playRedAt( 2 );
+        game.playBlueAt( 3 );
+        game.playRedAt( 3 );
+        game.playBlueAt( 1 );
+        game.playRedAt( 3 );
+        assertTrue(game.finished());
+        assertThrows( RuntimeException.class, () -> game.playBlueAt( 1 ));
+
     }
 
 
