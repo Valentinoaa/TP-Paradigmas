@@ -19,13 +19,9 @@ public abstract class Turn {
     }
 
 
-    public boolean itsRedTurn() {
-        return turn == "R";
-    }
+    public abstract boolean itsRedTurn();
 
-    public boolean itsBlueTurn() {
-        return turn == "B";
-    }
+    public abstract boolean itsBlueTurn();
 
     public abstract Turn playRedChipIn(int column, Linea game);
 

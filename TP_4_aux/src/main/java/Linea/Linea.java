@@ -4,6 +4,10 @@ import java.util.stream.IntStream;
 
 public class Linea {
 
+    public static final char RED_CHAR = 'R';
+    public static final char BLUE_CHAR = 'B';
+
+    public char winner;
     public ArrayList<ArrayList> board = new ArrayList<>();
 
     public int altura;
@@ -73,9 +77,11 @@ public class Linea {
 
         turn = turn.playRedChipIn(column, this);
 
-        if (fourInARowInColumn('R')) {
+        this.didPlayerWin(RED_CHAR, this);
+
+/*        if (fourInARowInColumn(RED_CHAR)) {
             turn = new Finished();
-        }
+        }*/
 /*
         if (turn.itsBlueTurn()) {
             throw new RuntimeException("No es turno de rojo");
@@ -86,6 +92,10 @@ public class Linea {
             }
             setTurn("B");
         }*/
+    }
+
+    private void didPlayerWin(char player, Linea game) {
+        mode.didPlayerWin(player, this);
     }
 
 
@@ -101,17 +111,21 @@ public class Linea {
             setTurn("R");
         }*/
 
+
+
         turn = turn.playBlueChipIn(column, this);
 
-        if (fourInARowInColumn('B')) {
+        this.didPlayerWin(BLUE_CHAR, this);
+
+        /*if (fourInARowInColumn(BLUE_CHAR)) {
             turn = new Finished();
-        }
+        }*/
     }
 
 
-    public void setTurn(String t) {
+/*    public void setTurn(String t) {
         turn.setTurn(t);
-    }
+    }*/
 
     public boolean itsRedsTurn() {
         return turn.itsRedTurn();
@@ -122,22 +136,22 @@ public class Linea {
     }
 
     public boolean lastChipInColumnIsRed(int i) {
-        return getColumn(i).get(getColumn(i).size() - 1) == 'R';
+        return getColumn(i).get(getColumn(i).size() - 1) == RED_CHAR;
     }
 
     public boolean lastChipInColumnIsBlue(int i) {
-        return getColumn(i).get(getColumn(i).size() - 1) == 'B';
+        return getColumn(i).get(getColumn(i).size() - 1) == BLUE_CHAR;
     }
 
     public void playRedChipIn(int column) {
-        getColumn(column).add('R');
+        getColumn(column).add(RED_CHAR);
     }
 
     public void playBlueChipIn(int column) {
-        getColumn(column).add('B');
+        getColumn(column).add(BLUE_CHAR);
     }
 
-    private boolean fourInARowInColumn(char chip) {
+    public boolean fourInARowInColumn(char chip) {
         for (int i = 0; i < boardColumns(); i++) {
             ArrayList<Character> column = getColumn(i);
             int counter = 0;
@@ -171,4 +185,15 @@ public class Linea {
     public char getGameMode() {
         return mode.getMode();
     }
+
+    public void setWinner(char player) {
+        winner = player;
+        turn = new Finished();
     }
+
+    public boolean fourInARowInDiagonal(char player) {
+        //not like that
+
+
+    }
+}

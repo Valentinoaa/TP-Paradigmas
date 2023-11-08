@@ -3,6 +3,16 @@ package Linea;
 public class Finished extends Turn {
 
     @Override
+    public boolean itsRedTurn() {
+        return false;
+    }
+
+    @Override
+    public boolean itsBlueTurn() {
+        return false;
+    }
+
+    @Override
     public Turn playRedChipIn(int column, Linea game) {
         throw new RuntimeException(YA_TERMINO_EL_JUEGO);
     }

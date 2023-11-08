@@ -1,11 +1,11 @@
 package Linea;
 
 import org.junit.Test;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.function.Executable;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertThrows;
 import static org.junit.Assert.assertTrue;
 
 public class LineaTest {
@@ -38,7 +38,7 @@ public class LineaTest {
     @Test
     public void test03BlueCantPlayInRedTurn(){
         game = new Linea( 4, 4, 'C');
-        assertThrows( RuntimeException.class, () -> game.playBlueAt( 0 ));
+        assertThrowsLike( () -> game.playBlueAt( 0 ), Turn.NO_ES_TURNO_DE_AZUL);
         assertTrue(game.itsRedsTurn());
         assertFalse(game.itsBluesTurn());
     }
@@ -59,7 +59,7 @@ public class LineaTest {
     public void test05RedCantPlayTwice(){
         game = new Linea( 4, 4, 'C');
         game.playRedAt( 0 );
-        assertThrows( RuntimeException.class, () -> game.playRedAt( 0 ));
+        assertThrowsLike( () -> game.playRedAt( 0 ), Turn.NO_ES_TURNO_DE_ROJO);
         assertEquals( 1, game.columnChips( 0 ));
         assertTrue(game.lastChipInColumnIsRed( 0 ));
         assertTrue(game.itsBluesTurn());
@@ -88,7 +88,7 @@ public class LineaTest {
         game.playBlueAt( 1 );
         game.playRedAt( 0 );
         assertTrue(game.finished());
-        assertThrows( RuntimeException.class, () -> game.playBlueAt( 1 ));
+        assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.YA_TERMINO_EL_JUEGO);
     }
 
     @Test
@@ -98,5 +98,10 @@ public class LineaTest {
         game.playBlueAt( 1 );
     }
 
+    private void assertThrowsLike(Executable executable, String message ) {
+
+        Assertions.assertEquals( message,
+                Assertions.assertThrows( Exception.class, executable).getMessage() );
+    }
 
 }

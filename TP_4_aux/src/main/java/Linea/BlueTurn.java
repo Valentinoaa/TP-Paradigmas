@@ -5,6 +5,16 @@ import java.util.ArrayList;
 public class BlueTurn extends Turn {
 
     @Override
+    public boolean itsRedTurn() {
+        return false;
+    }
+
+    @Override
+    public boolean itsBlueTurn() {
+        return true;
+    }
+
+    @Override
     public Turn playRedChipIn(int column, Linea game) {
         throw new RuntimeException(NO_ES_TURNO_DE_ROJO);
     }

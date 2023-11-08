@@ -36,4 +36,6 @@ public abstract class GameMode {
     public char getMode() {
         return mode;
     }
+
+    public abstract void didPlayerWin(char player, Linea game);
 }
