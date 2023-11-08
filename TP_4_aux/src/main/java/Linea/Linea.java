@@ -13,8 +13,6 @@ public class Linea {
     public int altura;
     public int base;
     public GameMode mode;
-
-/*    public boolean finished = false;*/
     public Turn turn = new RedTurn();
 
     public Linea(int base, int altura, char mode) {
@@ -71,27 +69,13 @@ public class Linea {
     }
 
     public void playRedAt(int column) {
-/*        if (finished()) {
-            throw new RuntimeException("El juego ya termino");
-        }*/
+        if (column >= base || column < 0 || columnIsFull(column)) {
+            throw new RuntimeException("Columna invalida");
+        }
 
         turn = turn.playRedChipIn(column, this);
 
         this.didPlayerWin(RED_CHAR, this);
-
-/*        if (fourInARowInColumn(RED_CHAR)) {
-            turn = new Finished();
-        }*/
-/*
-        if (turn.itsBlueTurn()) {
-            throw new RuntimeException("No es turno de rojo");
-        } else {
-            playRedChipIn(column);
-            if (fourInARowInColumn('R')) {
-                finished = true;
-            }
-            setTurn("B");
-        }*/
     }
 
     private void didPlayerWin(char player, Linea game) {
@@ -100,32 +84,19 @@ public class Linea {
 
 
     public void playBlueAt(int column) {
-/*        if (finished) throw new RuntimeException("El juego ya termino");
-        if (turn.itsRedTurn()) {
-            throw new RuntimeException("No es turno de azul");
-        } else {
-            playBlueChipIn(column);
-            if (fourInARowInColumn('B')) {
-                finished = true;
-            }
-            setTurn("R");
-        }*/
-
-
+        if (column >= base || column < 0 || columnIsFull(column)) {
+            throw new RuntimeException("Columna invalida");
+        }
 
         turn = turn.playBlueChipIn(column, this);
 
-        this.didPlayerWin(BLUE_CHAR, this);
-
-        /*if (fourInARowInColumn(BLUE_CHAR)) {
-            turn = new Finished();
-        }*/
+        didPlayerWin(BLUE_CHAR, this);
     }
 
+    private boolean columnIsFull(int column) {
+        return getColumn(column).size() == altura;
+    }
 
-/*    public void setTurn(String t) {
-        turn.setTurn(t);
-    }*/
 
     public boolean itsRedsTurn() {
         return turn.itsRedTurn();
@@ -180,6 +151,7 @@ public class Linea {
             }
     }
         return false;
+
 }
 
     public char getGameMode() {
@@ -192,8 +164,10 @@ public class Linea {
     }
 
     public boolean fourInARowInDiagonal(char player) {
-        //not like that
+        for (int i = 0; i < altura; i++){
+            for (int j = 0; j < base; j++){
 
-
+            }
+        }
     }
 }

@@ -1,7 +1,5 @@
 package Linea;
 
-import java.util.ArrayList;
-
 public class RedTurn extends Turn {
 
     @Override
