@@ -1,12 +1,14 @@
 package Linea;
 
-import org.junit.Test;
+import Linea.turn.Turn;
+import org.testng.annotations.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import java.util.List;
+
+import static org.testng.Assert.*;
+
 
 public class LineaTest {
 
@@ -93,15 +95,44 @@ public class LineaTest {
 
     @Test
     public void test08BlueRowWins(){
-        game = new Linea( 4, 4, 'C');
+        game = new Linea( 5, 5, 'C');
         game.playRedAt( 0 );
         game.playBlueAt( 1 );
+        game.playRedAt( 0 );
+        game.playBlueAt( 2 );
+        game.playRedAt( 1 );
+        game.playBlueAt( 3 );
+        game.playRedAt( 2 );
+        game.playBlueAt(4);
+        assertTrue(game.finished());
+        assertThrowsLike( () -> game.playRedAt( 3 ), Turn.YA_TERMINO_EL_JUEGO);
+
+    }
+
+    @Test
+    public void test09RedDiagonalWins(){
+        game = new Linea( 5, 5, 'C');
+        playIn(List.of(0, 1, 1, 2, 2, 3, 2, 3, 3, 4));
+        assertTrue(game.finished());
     }
 
     private void assertThrowsLike(Executable executable, String message ) {
 
-        Assertions.assertEquals( message,
+        assertEquals( message,
                 Assertions.assertThrows( Exception.class, executable).getMessage() );
+    }
+
+    private void playIn(List<Integer> columns) {
+        boolean red = true;
+        for (Integer column : columns) {
+            if (red) {
+                game.playRedAt(column);
+                red = false;
+            } else {
+                game.playBlueAt(column);
+                red = true;
+            }
+        }
     }
 
 }

@@ -1,8 +1,10 @@
-package Linea;
+package Linea.gameMode;
+
+import Linea.Linea;
+import Linea.RowsAndColumns;
 
 import java.util.List;
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 
 public abstract class GameMode {

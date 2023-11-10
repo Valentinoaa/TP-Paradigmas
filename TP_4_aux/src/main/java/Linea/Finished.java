@@ -1,5 +1,7 @@
 package Linea;
 
+import Linea.turn.Turn;
+
 public class Finished extends Turn {
 
     @Override

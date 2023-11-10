@@ -1,4 +1,8 @@
 package Linea;
+import Linea.gameMode.GameMode;
+import Linea.turn.RedTurn;
+import Linea.turn.Turn;
+
 import java.util.ArrayList;
 import java.util.stream.IntStream;
 
@@ -74,15 +78,8 @@ public class Linea {
         }
 
         turn = turn.playRedChipIn(column, this);
-
         this.didPlayerWin(RED_CHAR, this);
     }
-
-    private void didPlayerWin(char player, Linea game) {
-        mode.didPlayerWin(player, this);
-    }
-
-
     public void playBlueAt(int column) {
         if (column >= base || column < 0 || columnIsFull(column)) {
             throw new RuntimeException("Columna invalida");
@@ -91,6 +88,10 @@ public class Linea {
         turn = turn.playBlueChipIn(column, this);
 
         didPlayerWin(BLUE_CHAR, this);
+    }
+
+    private void didPlayerWin(char player, Linea game) {
+        mode.didPlayerWin(player, this);
     }
 
     private boolean columnIsFull(int column) {
@@ -144,16 +145,41 @@ public class Linea {
 
     public boolean fourInARowInRow(Character chip) {
         for (int i = 0; i < boardColumns(); i++) {
-            for (int j = 0; i < boardColumns(); i++) {
-                if (board.get(i).get(j) == (chip)) {
-                    return true;
+            int counter = 0;
+            for (int j = 0; j < boardColumns(); j++) {
+                if (!(i >= getColumn(j).size())) {
+                    if (getColumn(j).get(i) == (chip)) {
+                        counter += 1;
+                    } else {
+                        counter = 0;
+                    }
+                    if (counter >= 4) {
+                        return true;
+                    }
                 }
+
             }
-    }
+        }
         return false;
 
 }
-
+    public boolean fourInARowInDiagonal(char player) {
+        for (int r = 0; r < base; r++){
+            int counter = 0;
+            for (int h = 0; h < base; h++ ){
+                if (buscarCoord(r + h, h) == player){
+                    counter += 1;
+                    if (counter >= 4){
+                        return true;
+                    }
+                }
+                else {
+                    counter = 0;
+                }
+            }
+        }
+        return false;
+    }
     public char getGameMode() {
         return mode.getMode();
     }
@@ -163,11 +189,14 @@ public class Linea {
         turn = new Finished();
     }
 
-    public boolean fourInARowInDiagonal(char player) {
-        for (int i = 0; i < altura; i++){
-            for (int j = 0; j < base; j++){
 
+
+    private Character buscarCoord(int x, int y) {
+        if (x >= 0 && x < base && y >= 0 && y < base) {
+            if (getColumn(x).size() > y) {
+                return getColumn(x).get(y);
             }
         }
+        return ' ';
     }
 }

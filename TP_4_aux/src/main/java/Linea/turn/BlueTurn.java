@@ -1,6 +1,6 @@
-package Linea;
+package Linea.turn;
 
-import java.util.ArrayList;
+import Linea.Linea;
 
 public class BlueTurn extends Turn {
 

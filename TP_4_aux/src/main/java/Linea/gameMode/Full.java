@@ -1,6 +1,9 @@
-package Linea;
+package Linea.gameMode;
 
-public class Full extends GameMode{
+import Linea.Linea;
+import Linea.gameMode.GameMode;
+
+public class Full extends GameMode {
     public Full(){
         this.mode = 'C';
     }

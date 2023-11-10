@@ -1,4 +1,6 @@
-package Linea;
+package Linea.turn;
+
+import Linea.Linea;
 
 public class RedTurn extends Turn {
 

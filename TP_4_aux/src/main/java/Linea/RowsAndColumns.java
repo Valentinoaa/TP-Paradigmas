@@ -1,8 +1,8 @@
 package Linea;
 
-import java.util.List;
+import Linea.gameMode.GameMode;
 
-public class RowsAndColumns extends GameMode{
+public class RowsAndColumns extends GameMode {
     public RowsAndColumns(){
         this.mode = 'A';
     }

@@ -1,7 +1,6 @@
-package Linea;
+package Linea.turn;
 
-import java.util.ArrayList;
-import java.util.List;
+import Linea.Linea;
 
 public abstract class Turn {
 

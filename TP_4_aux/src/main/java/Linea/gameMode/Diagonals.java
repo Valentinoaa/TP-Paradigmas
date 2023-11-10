@@ -1,6 +1,9 @@
-package Linea;
+package Linea.gameMode;
 
-public class Diagonals extends GameMode{
+import Linea.Linea;
+import Linea.gameMode.GameMode;
+
+public class Diagonals extends GameMode {
     public Diagonals(){
         this.mode = 'B';
     }
