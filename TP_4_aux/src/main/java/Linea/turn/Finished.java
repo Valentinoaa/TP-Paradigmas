@@ -1,5 +1,6 @@
-package Linea;
+package Linea.turn;
 
+import Linea.Linea;
 import Linea.turn.Turn;
 
 public class Finished extends Turn {

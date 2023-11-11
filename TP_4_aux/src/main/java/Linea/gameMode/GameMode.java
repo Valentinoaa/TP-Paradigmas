@@ -31,10 +31,6 @@ public abstract class GameMode {
         return key == mode;
     }
 
-    public boolean finished() {
-        return false;
-    }
-
     public char getMode() {
         return mode;
     }
