@@ -1,7 +1,4 @@
-package Linea.gameMode;
-
-import Linea.Linea;
-import Linea.turn.gameOver.GameOver;
+package Linea;
 
 public class Full extends GameMode {
     public Full(){
@@ -14,7 +11,7 @@ public class Full extends GameMode {
             game.setTurn(new GameOver(player + " wins!"));
         }
         else if (game.itsADraw()){
-            game.setTurn(new GameOver("Draw!"));
+            game.setTurn(new GameOver(DRAW));
         }
     }
 

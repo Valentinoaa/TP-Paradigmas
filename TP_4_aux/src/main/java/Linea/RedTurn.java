@@ -1,28 +1,26 @@
-package Linea.turn;
+package Linea;
 
-import Linea.Linea;
-
-public class BlueTurn extends Turn {
+public class RedTurn extends Turn {
 
     @Override
     public boolean itsRedTurn() {
-        return false;
-    }
-
-    @Override
-    public boolean itsBlueTurn() {
         return true;
     }
 
     @Override
+    public boolean itsBlueTurn() {
+        return false;
+    }
+
+    @Override
     public Turn playRedChipIn(int column, Linea game) {
-        throw new RuntimeException(NO_ES_TURNO_DE_ROJO);
+        game.playRedChipIn(column);
+        return new BlueTurn();
     }
 
     @Override
     public Turn playBlueChipIn(int column, Linea game) {
-        game.playBlueChipIn(column);
-        return new RedTurn();
+        throw new RuntimeException(NOT_BLUES_TURN);
     }
 
     @Override

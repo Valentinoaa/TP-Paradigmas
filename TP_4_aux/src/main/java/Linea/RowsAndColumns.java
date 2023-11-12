@@ -1,7 +1,7 @@
-package Linea.gameMode;
+package Linea;
 
 import Linea.Linea;
-import Linea.turn.gameOver.GameOver;
+import Linea.GameOver;
 
 public class RowsAndColumns extends GameMode {
     public RowsAndColumns(){
@@ -14,7 +14,7 @@ public class RowsAndColumns extends GameMode {
             game.setTurn(new GameOver(player + " wins!"));
         }
         else if (game.itsADraw()){
-            game.setTurn(new GameOver("Draw!"));
+            game.setTurn(new GameOver(DRAW));
         }
     }
 

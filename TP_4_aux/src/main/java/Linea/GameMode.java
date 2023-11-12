@@ -1,6 +1,4 @@
-package Linea.gameMode;
-
-import Linea.Linea;
+package Linea;
 
 import java.util.List;
 import java.util.Arrays;
@@ -8,9 +6,9 @@ import java.util.Arrays;
 
 public abstract class GameMode {
 
-    public static final String invalidTypeOfGame = "Invalid type of game";
+    public static final String INVALID_MODE = "Invalid mode";
+    public static final String DRAW = "Draw!";
     public char mode;
-
     public GameMode(){}
 
     public static List<GameMode> availableModes = Arrays.asList(
@@ -22,10 +20,9 @@ public abstract class GameMode {
         return availableModes.stream()
                 .filter(game -> game.equalsType(key))
                 .findFirst()
-                .orElseThrow(() -> new IllegalArgumentException(invalidTypeOfGame));
+                .orElseThrow(() -> new IllegalArgumentException(INVALID_MODE));
 
     }
-
 
     public boolean equalsType(Character key){
         return key == mode;

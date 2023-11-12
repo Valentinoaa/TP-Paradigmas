@@ -1,9 +1,5 @@
 package Linea;
 
-import Linea.gameMode.GameMode;
-import Linea.turn.Turn;
-import org.junit.Before;
-import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
@@ -25,8 +21,7 @@ public class LineaTest {
 
     @Test
     public void test01IsGameModeSetCorrectly(){
-        assertThrowsLike( () -> game = new Linea( 4, 4, 'D'),
-                GameMode.invalidTypeOfGame);
+        assertThrowsLike( () -> game = new Linea( 4, 4, 'D'), GameMode.INVALID_MODE);
     }
 
     @Test
@@ -67,14 +62,14 @@ public class LineaTest {
         assertEquals( 0, game.columnChips( 2 ));
         assertEquals( 0, game.columnChips( 3 ));
         assertEquals( 0, game.columnChips( 4 ));
-        assertTrue(game.lastChipInColumnIsRed( 1 ));
+        assertTrue(game.lastChipInColumnIs( 'R', 1 ));
         assertTrue(game.itsBluesTurn());
     }
 
     @Test
     public void test03BlueCantPlayInRedTurn(){
         game = new Linea( 4, 4, 'C');
-        assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.NO_ES_TURNO_DE_AZUL);
+        assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.NOT_BLUES_TURN);
         assertTrue(game.itsRedsTurn());
         assertFalse(game.itsBluesTurn());
     }
@@ -83,9 +78,9 @@ public class LineaTest {
     public void test05RedCantPlayInBluesTurn(){
         game = new Linea( 4, 4, 'C');
         game.playRedAt( 1 );
-        assertThrowsLike( () -> game.playRedAt( 1 ), Turn.NO_ES_TURNO_DE_ROJO);
+        assertThrowsLike( () -> game.playRedAt( 1 ), Turn.NOT_REDS_TURN);
         assertEquals( 1, game.columnChips( 1 ));
-        assertTrue(game.lastChipInColumnIsRed( 1 ));
+        assertTrue(game.lastChipInColumnIs('R', 1 ));
         assertTrue(game.itsBluesTurn());
     }
 
@@ -97,14 +92,15 @@ public class LineaTest {
         game.playRedAt( 1 );
         game.playBlueAt( 1 );
         assertEquals( 4, game.columnChips( 1 ));
-        assertTrue(game.lastChipInColumnIsBlue( 1 ));
+        assertTrue(game.lastChipInColumnIs('B', 1 ));
         assertTrue(game.itsRedsTurn());
     }
 
     @Test
     public void testCantPlayOnFullColumn(){
         game = new Linea(4, 4, 'C');
-        assertThrowsLike(() -> playIn(List.of(1, 1, 1, 1, 1, 1, 1)), Linea.INVALID_COLUMN);
+        playIn(List.of(1, 1, 1, 1 ));
+        assertThrowsLike(() -> game.playRedAt(1), Linea.INVALID_COLUMN);
     }
 
     @Test
@@ -153,14 +149,14 @@ public class LineaTest {
         game = new Linea( 2, 2, 'C');
         playIn(List.of(1, 2, 1, 2));
         assertTrue(game.finished());
-        assertThrowsLike( () -> game.playRedAt( 1 ), Linea.TIE);
+        assertThrowsLike( () -> game.playRedAt( 1 ), GameMode.DRAW);
     }
 
     @Test
     public void test12Draw(){
         game = new Linea( 3, 3, 'C');
         playIn(List.of(1, 2, 3, 1, 2, 3, 1, 2, 3));
-        assertThrowsLike( () -> game.playBlueAt( 3 ), Linea.TIE);
+        assertThrowsLike( () -> game.playBlueAt( 3 ), GameMode.DRAW);
         assertTrue(game.finished());
 
     }
@@ -169,7 +165,7 @@ public class LineaTest {
     public void test13FullBoard(){
         game = new Linea(4, 4, 'C');
         playIn(List.of(1, 2, 3, 4, 1, 2, 3, 4, 4, 3, 2, 1, 4, 3, 2, 1));
-        assertThrowsLike( () -> game.playRedAt( 1 ), Linea.TIE);
+        assertThrowsLike( () -> game.playRedAt( 1 ), GameMode.DRAW);
     }
 
 
@@ -190,5 +186,4 @@ public class LineaTest {
             }
         }
     }
-
 }
