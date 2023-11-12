@@ -1,6 +1,9 @@
 package Linea;
 
+import Linea.gameMode.GameMode;
 import Linea.turn.Turn;
+import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
@@ -12,7 +15,7 @@ import static org.testng.Assert.*;
 
 public class LineaTest {
 
-    Linea game;
+    private Linea game;
 
     @Test
     public void test00IsGameModeSetCorrectly(){
@@ -21,8 +24,15 @@ public class LineaTest {
     }
 
     @Test
-    public void test01NewLinea() {
+    public void test01IsGameModeSetCorrectly(){
+        assertThrowsLike( () -> game = new Linea( 4, 4, 'D'),
+                GameMode.invalidTypeOfGame);
+    }
+
+    @Test
+    public void test02BoardStarsEmpty() {
         game = new Linea( 4, 4, 'C');
+        assertTrue(game.isEmpty());
         assertEquals( 4, game.boardColumns());
         assertEquals( 0, game.columnChips( 1 ));
         assertEquals( 0, game.columnChips( 2 ));
@@ -38,15 +48,19 @@ public class LineaTest {
     }
 
     @Test
-    public void test03BlueCantPlayInRedTurn(){
-        game = new Linea( 4, 4, 'C');
-        assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.NO_ES_TURNO_DE_AZUL);
-        assertTrue(game.itsRedsTurn());
-        assertFalse(game.itsBluesTurn());
+    public void testCantPlayChipOutsideTheBoard(){
+        game = new Linea(2, 2, 'C');
+        assertThrowsLike(() -> game.playRedAt(3), Linea.INVALID_COLUMN);
     }
 
     @Test
-    public void test04RedPlays(){
+    public void testCantPlaceChipAtColumnZero(){
+        game = new Linea(4, 4, 'C');
+        assertThrowsLike(() -> game.playRedAt(0), Linea.INVALID_COLUMN);
+    }
+
+    @Test
+    public void test04RedPlaysCorrectly(){
         game = new Linea( 4, 4, 'C');
         game.playRedAt( 1 );
         assertEquals( 1, game.columnChips( 1 ));
@@ -58,7 +72,15 @@ public class LineaTest {
     }
 
     @Test
-    public void test05RedCantPlayTwice(){
+    public void test03BlueCantPlayInRedTurn(){
+        game = new Linea( 4, 4, 'C');
+        assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.NO_ES_TURNO_DE_AZUL);
+        assertTrue(game.itsRedsTurn());
+        assertFalse(game.itsBluesTurn());
+    }
+
+    @Test
+    public void test05RedCantPlayInBluesTurn(){
         game = new Linea( 4, 4, 'C');
         game.playRedAt( 1 );
         assertThrowsLike( () -> game.playRedAt( 1 ), Turn.NO_ES_TURNO_DE_ROJO);
@@ -80,14 +102,18 @@ public class LineaTest {
     }
 
     @Test
+    public void testCantPlayOnFullColumn(){
+        game = new Linea(4, 4, 'C');
+        assertThrowsLike(() -> playIn(List.of(1, 1, 1, 1, 1, 1, 1)), Linea.INVALID_COLUMN);
+    }
+
+    @Test
     public void test07RedColumnWins(){
         game = new Linea( 4, 4, 'A');
         playIn(List.of(1, 2, 1, 2, 1, 2, 1));
         assertTrue(game.finished());
         assertThrowsLike( () -> game.playBlueAt( 2 ), "R wins!");
-        // Está mal acceder a la variable turn creo
     }
-
     @Test
     public void test08BlueRowWins(){
         game = new Linea( 5, 5, 'A');
@@ -95,6 +121,17 @@ public class LineaTest {
         assertTrue(game.finished());
         assertThrowsLike( () -> game.playRedAt( 3 ), "B wins!");
 
+    }
+    @Test void test08DiagonalCantWinInRowsAndColsMode(){
+        game = new Linea( 5, 5, 'A');
+        playIn(List.of(1, 2, 2, 3, 3, 4, 3, 4, 4, 1, 4));
+        assertFalse(game.finished());
+    }
+    @Test
+    public void test08ColumnCantWinInDiagonalsMode (){
+        game = new Linea( 4, 4, 'B');
+        playIn(List.of(1, 2, 1, 2, 1, 2, 1));
+        assertFalse(game.finished());
     }
 
     @Test
@@ -106,26 +143,33 @@ public class LineaTest {
     }
 
     @Test
-    public void test10MoreDiagonalChecks() {
+    public void test10LeftDiagonalWins() {
         game = new Linea( 5, 5, 'B');
         playIn(List.of(1, 1, 1, 1, 2, 4, 2, 2, 3, 3));
         assertTrue(game.finished());
+    }
+    @Test
+    public void test14Draw(){
+        game = new Linea( 2, 2, 'C');
+        playIn(List.of(1, 2, 1, 2));
+        assertTrue(game.finished());
+        assertThrowsLike( () -> game.playRedAt( 1 ), Linea.TIE);
     }
 
     @Test
     public void test12Draw(){
         game = new Linea( 3, 3, 'C');
-        playIn(List.of(1, 2, 3, 1, 2, 3, 1, 2));
-        assertThrowsLike( () -> game.playRedAt( 2 ), Linea.TIE);
+        playIn(List.of(1, 2, 3, 1, 2, 3, 1, 2, 3));
+        assertThrowsLike( () -> game.playBlueAt( 3 ), Linea.TIE);
         assertTrue(game.finished());
+
     }
 
     @Test
     public void test13FullBoard(){
         game = new Linea(4, 4, 'C');
-        playIn(List.of(1, 2, 3, 4, 1, 2, 3, 4, 4, 3, 2, 1, 4, 3, 2));
-        // MMM medio raro esto, el empate deberia saltar cuando meto la ficha?!?
-        assertThrowsLike( () -> game.playRedAt( 0 ), Linea.TIE);
+        playIn(List.of(1, 2, 3, 4, 1, 2, 3, 4, 4, 3, 2, 1, 4, 3, 2, 1));
+        assertThrowsLike( () -> game.playRedAt( 1 ), Linea.TIE);
     }
 
 

@@ -58,12 +58,6 @@ public class Linea {
         turn = turn.playRedChipIn(column, this);
         checkGameIsFinished(RED_CHAR);
     }
-    public void playRedChipIn(int column) {
-        if (column >= base || column < 0 || columnIsFull(column)) {
-            throw new RuntimeException(INVALID_COLUMN);
-        }
-        getColumn(column).add(RED_CHAR);
-    }
 
     public void playBlueAt(int column) {
         column --;
@@ -80,7 +74,12 @@ public class Linea {
         }
         getColumn(column).add(BLUE_CHAR);
     }
-
+    public void playRedChipIn(int column) {
+        if (column >= base || column < 0 || columnIsFull(column)) {
+            throw new RuntimeException(INVALID_COLUMN);
+        }
+        getColumn(column).add(RED_CHAR);
+    }
     private void checkGameIsFinished(char player) {
         mode.didPlayerWin(player, this);
     }
@@ -120,7 +119,7 @@ public class Linea {
 
     public boolean fourInARowInDiagonal(char player) {
         return IntStream.range(0, boardColumns())
-                .anyMatch(i -> IntStream.range(0, boardColumns() - 3)
+                .anyMatch(i -> IntStream.range(0, boardColumns())
                         .anyMatch(j ->
                                 IntStream.range(0, 4)
                                         .allMatch(k -> getChar(j + k, i + k) == player)
@@ -133,7 +132,7 @@ public class Linea {
     }
 
     public boolean itsADraw() {
-        return IntStream.range(1, boardColumns() - 1)
+        return IntStream.range(1, boardColumns() + 1)
                 .allMatch(i -> columnChips(i) == height);
     }
 
@@ -166,5 +165,10 @@ public class Linea {
 
     public char getGameMode() {
         return mode.getMode();
+    }
+
+    public boolean isEmpty() {
+        return IntStream.range(0, boardColumns())
+                .allMatch(column -> getColumn(column).isEmpty());
     }
 }
