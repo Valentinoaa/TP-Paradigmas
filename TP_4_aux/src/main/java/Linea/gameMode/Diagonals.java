@@ -1,7 +1,7 @@
 package Linea.gameMode;
 
 import Linea.Linea;
-import Linea.gameMode.GameMode;
+import Linea.turn.gameOver.GameOver;
 
 public class Diagonals extends GameMode {
     public Diagonals(){
@@ -10,8 +10,11 @@ public class Diagonals extends GameMode {
 
     @Override
     public void didPlayerWin(char player, Linea game) {
-        if (game.fourInARowInDiagonal(player)){
-            game.setWinner(player);
+        if (game.fourInARowInDiagonal(player)) {
+            game.setTurn(new GameOver(player + " wins!"));
+        }
+        else if (game.itsADraw()){
+            game.setTurn(new GameOver("Draw!"));
         }
     }
 }

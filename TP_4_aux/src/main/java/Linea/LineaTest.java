@@ -84,16 +84,16 @@ public class LineaTest {
         game = new Linea( 4, 4, 'A');
         playIn(List.of(1, 2, 1, 2, 1, 2, 1));
         assertTrue(game.finished());
-        assertThrowsLike( () -> game.playBlueAt( 2 ), Turn.YA_TERMINO_EL_JUEGO);
+        assertThrowsLike( () -> game.playBlueAt( 2 ), "R wins!");
         // Está mal acceder a la variable turn creo
     }
 
     @Test
     public void test08BlueRowWins(){
         game = new Linea( 5, 5, 'A');
-        playIn(List.of(1, 2, 1, 3, 1, 4, 1));
+        playIn(List.of(1, 2, 2, 3, 1, 5, 1, 4));
         assertTrue(game.finished());
-        assertThrowsLike( () -> game.playRedAt( 3 ), Turn.YA_TERMINO_EL_JUEGO);
+        assertThrowsLike( () -> game.playRedAt( 3 ), "B wins!");
 
     }
 
@@ -124,13 +124,12 @@ public class LineaTest {
     public void test13FullBoard(){
         game = new Linea(4, 4, 'C');
         playIn(List.of(1, 2, 3, 4, 1, 2, 3, 4, 4, 3, 2, 1, 4, 3, 2));
-        // MMM medio raro esto, el empate deberia saltar cuando meto la ficha??
+        // MMM medio raro esto, el empate deberia saltar cuando meto la ficha?!?
         assertThrowsLike( () -> game.playRedAt( 0 ), Linea.TIE);
     }
 
 
     private void assertThrowsLike(Executable executable, String message ) {
-
         assertEquals( message,
                 Assertions.assertThrows( Exception.class, executable).getMessage() );
     }

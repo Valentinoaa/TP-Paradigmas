@@ -1,7 +1,6 @@
 package Linea.gameMode;
 
 import Linea.Linea;
-import Linea.RowsAndColumns;
 
 import java.util.List;
 import java.util.Arrays;
@@ -26,6 +25,7 @@ public abstract class GameMode {
                 .orElseThrow(() -> new IllegalArgumentException(invalidTypeOfGame));
 
     }
+
 
     public boolean equalsType(Character key){
         return key == mode;

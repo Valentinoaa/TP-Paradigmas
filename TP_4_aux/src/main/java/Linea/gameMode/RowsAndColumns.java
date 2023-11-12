@@ -1,6 +1,7 @@
-package Linea;
+package Linea.gameMode;
 
-import Linea.gameMode.GameMode;
+import Linea.Linea;
+import Linea.turn.gameOver.GameOver;
 
 public class RowsAndColumns extends GameMode {
     public RowsAndColumns(){
@@ -10,7 +11,10 @@ public class RowsAndColumns extends GameMode {
     @Override
     public void didPlayerWin(char player, Linea game) {
         if (game.fourInARowInRow(player) || game.fourInARowInColumn(player)){
-            game.setWinner(player);
+            game.setTurn(new GameOver(player + " wins!"));
+        }
+        else if (game.itsADraw()){
+            game.setTurn(new GameOver("Draw!"));
         }
     }
 

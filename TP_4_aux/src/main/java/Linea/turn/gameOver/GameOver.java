@@ -4,6 +4,11 @@ import Linea.Linea;
 import Linea.turn.Turn;
 
 public class GameOver extends Turn {
+
+    private final String ErrorMessage;
+    public GameOver(String ErrorMessage){
+        this.ErrorMessage = ErrorMessage;
+    }
     @Override
     public boolean itsRedTurn() {
         return false;
@@ -16,11 +21,11 @@ public class GameOver extends Turn {
 
     @Override
     public Turn playRedChipIn(int column, Linea game) {
-        throw new RuntimeException(YA_TERMINO_EL_JUEGO);
+        throw new RuntimeException(ErrorMessage);
     }
     @Override
     public Turn playBlueChipIn(int column, Linea game) {
-        throw new RuntimeException(YA_TERMINO_EL_JUEGO);
+        throw new RuntimeException(ErrorMessage);
     }
     @Override
     public boolean finished() {
