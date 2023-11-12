@@ -36,6 +36,18 @@ public class LineaTest {
     }
 
     @Test
+    public void test03ShowEmptyBoard(){
+        game = new Linea( 4, 4, 'C');
+        assertEquals(game.show(),
+                "|  -  -  -  -  |\n" +
+                        "|  -  -  -  -  |\n" +
+                        "|  -  -  -  -  |\n" +
+                        "|  -  -  -  -  |\n" +
+                        "|  ^  ^  ^  ^  |\n"
+            );
+    }
+
+    @Test
     public void test02RedStarts(){
         game = new Linea( 4, 4, 'C');
         assertTrue(game.itsRedsTurn());
@@ -67,6 +79,19 @@ public class LineaTest {
     }
 
     @Test
+    public void test05RedChipDisplaysCorrectly(){
+        game = new Linea( 4, 4, 'C');
+        game.playRedAt( 1 );
+        assertEquals(game.show(),
+                "|  -  -  -  -  |\n" +
+                "|  -  -  -  -  |\n" +
+                "|  -  -  -  -  |\n" +
+                "|  R  -  -  -  |\n" +
+                "|  ^  ^  ^  ^  |\n");
+
+    }
+
+    @Test
     public void test03BlueCantPlayInRedTurn(){
         game = new Linea( 4, 4, 'C');
         assertThrowsLike( () -> game.playBlueAt( 1 ), Turn.NOT_BLUES_TURN);
@@ -94,6 +119,18 @@ public class LineaTest {
         assertEquals( 4, game.columnChips( 1 ));
         assertTrue(game.lastChipInColumnIs('B', 1 ));
         assertTrue(game.itsRedsTurn());
+    }
+
+    @Test
+    public void test07ShowMultipleChips(){
+        game = new Linea( 4, 4, 'C');
+        playIn(List.of(1, 2, 1, 1, 3, 4 ));
+        assertEquals(game.show(),
+                "|  -  -  -  -  |\n" +
+                        "|  -  -  -  -  |\n" +
+                        "|  B  -  -  -  |\n" +
+                        "|  R  -  -  -  |\n" +
+                        "|  R  B  R  B  |\n");
     }
 
     @Test
