@@ -25,9 +25,9 @@ public class Linea {
     }
 
     public String show() {
-        return IntStream.range(0 , height)
+        return IntStream.range(0, height)
                 .mapToObj(i -> IntStream.range(0, base)
-                        .mapToObj(j -> " " + getChar(height - i, base - j) + " ")
+                        .mapToObj(j -> " " + getChar( j , height - i - 1) + " ")
                         .reduce("| ", (a, b) -> a + b) + " |\n")
                 .reduce("", (a, b) -> a + b) + "| " + IntStream.range(0, base).mapToObj(i -> " ^ ").reduce("", (a, b) -> a + b) + " |\n";
     }
