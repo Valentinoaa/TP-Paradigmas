@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d33e5429-a526-4c6f-90ae-41f7c77178a1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Linea/gameMode/Diagonals.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Linea/gameMode/Diagonals.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Linea/gameMode/Full.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Linea/gameMode/Full.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Linea/gameMode/RowsAndColumns.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Linea/gameMode/RowsAndColumns.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Linea/turn/gameOver/GameOver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Linea/turn/GameOver.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2Xtf6wRKRKVwRA3nuhM3vkDw1DT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "TP__4__Ilan",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.48505747",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="Linea" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\iluno\OneDrive\Documents\GitHub\TP-Paradigmas\TP_4_aux\src\main\java\linea" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="linea" />
+    </key>
+  </component>
+  <component name="RunManager" selected="TestNG.LineaTest">
+    <configuration name="LineaTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test00IsGameModeSetCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test00IsGameModeSetCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test00IsgameModeSetCorrectly" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test00IsgameModeSetCorrectly" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test01NewLinea" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test01NewLinea" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.LineaTest" />
+        <item itemvalue="JUnit.LineaTest" />
+        <item itemvalue="JUnit.LineaTest.test01NewLinea" />
+        <item itemvalue="JUnit.LineaTest.test00IsGameModeSetCorrectly" />
+        <item itemvalue="JUnit.LineaTest.test00IsgameModeSetCorrectly" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d33e5429-a526-4c6f-90ae-41f7c77178a1" name="Changes" comment="" />
+      <created>1699453127623</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699453127623</updated>
+      <workItem from="1699453128680" duration="1430000" />
+      <workItem from="1699454570017" duration="3061000" />
+      <workItem from="1699460690951" duration="3447000" />
+      <workItem from="1699471685114" duration="4066000" />
+      <workItem from="1699475832284" duration="409000" />
+      <workItem from="1699577129671" duration="22000" />
+      <workItem from="1699577565185" duration="231000" />
+      <workItem from="1699817408450" duration="18000" />
+      <workItem from="1699823482910" duration="312000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="java.lang.NullPointerException" package="java.lang" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$PROJECT_DIR$/../../../../../../../Program Files/Java/jdk-11/lib/src.zip!/java.base/java/util/ArrayList.java</url>
+          <line>447</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
