@@ -1,12 +1,10 @@
 package Linea;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.function.Executable;
-
 import java.util.List;
-
-import static org.testng.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
 
 public class LineaTest {
@@ -179,7 +177,8 @@ public class LineaTest {
         assertThrowsLike( () -> game.playRedAt( 3 ), "B wins!");
 
     }
-    @Test void test18DiagonalCantWinInRowsAndColsMode(){
+    @Test
+    public void test18DiagonalCantWinInRowsAndColsMode(){
         game = new Linea( 5, 5, 'A');
         playIn(List.of(1, 2, 2, 3, 3, 4, 3, 4, 4, 1, 4));
         assertFalse(game.finished());

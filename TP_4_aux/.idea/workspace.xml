@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3b4686c1-2e8f-40df-9971-9ca5a15e896c" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
+  <component name="ProjectId" id="2XuJZK7xJbV0LOA3XQcNhR543iW" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/valen/Documents/Repositorios/TP-Paradigmas/TP_4",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager" selected="TestNG.LineaTest">
+    <configuration name="LineaTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.turn.gameOver.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test03ShowEmptyBoard" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test03ShowEmptyBoard" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test05RedChipDisplaysCorrectly" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test05RedChipDisplaysCorrectly" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test07ShowMultipleChips" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test07ShowMultipleChips" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LineaTest.test09ShowChipsInAsymmetricBoard" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="TP_4_aux" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Linea.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="Linea" />
+      <option name="MAIN_CLASS_NAME" value="Linea.LineaTest" />
+      <option name="METHOD_NAME" value="test09ShowChipsInAsymmetricBoard" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.LineaTest" />
+        <item itemvalue="TestNG.LineaTest.test09ShowChipsInAsymmetricBoard" />
+        <item itemvalue="TestNG.LineaTest.test05RedChipDisplaysCorrectly" />
+        <item itemvalue="TestNG.LineaTest.test07ShowMultipleChips" />
+        <item itemvalue="TestNG.LineaTest.test03ShowEmptyBoard" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3b4686c1-2e8f-40df-9971-9ca5a15e896c" name="Changes" comment="" />
+      <created>1699473086133</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1699473086133</updated>
+      <workItem from="1699473087122" duration="2055000" />
+      <workItem from="1699537918539" duration="310000" />
+      <workItem from="1699539347246" duration="31501000" />
+      <workItem from="1699826381434" duration="633000" />
+      <workItem from="1699830895521" duration="4094000" />
+      <workItem from="1699843994399" duration="8000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+</project>
